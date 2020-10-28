@@ -23,4 +23,6 @@ mongoose.connection.on('disconnect', function (event) {
 module.exports = {
     Itinerary: require('./Itinerary'),
     Flight: require('./Flight'),
+    Note: require('./Note'),
+    User: require('./User'),
 }
