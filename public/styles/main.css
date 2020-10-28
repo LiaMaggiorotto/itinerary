@@ -60,7 +60,7 @@ img.header-overlay {
 }
 
 .mt-5, .my-5 {
-    margin-top: 12rem!important;
+    margin-top: 20vh!important;
 }
 
 /* Featurettes */
@@ -92,7 +92,7 @@ div.row.featurette {
 /* Media Queries */
 
 @media only screen and (max-width: 600px) {
-   
+  
 /* Home Page */
     div.row.featurette {
         flex-wrap: wrap;
@@ -106,6 +106,10 @@ div.row.featurette {
         margin-bottom: 0rem;
         width: 80vw;
         height: 8vh;
+    }
+
+    .position-relative {
+        height: 60vh;
     }
 
 }
