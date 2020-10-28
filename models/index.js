@@ -25,4 +25,5 @@ module.exports = {
     Flight: require('./Flight'),
     Note: require('./Note'),
     User: require('./User'),
+    Trip: require('./Trip'),
 }
