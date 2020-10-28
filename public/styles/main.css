@@ -20,7 +20,11 @@
     color: #c7cacf;
 }
 
-/* Home Page Image */
+/* Home Page Header Image */
+
+body {
+    color: #171A27;
+}
 
 .position-relative {
     margin-top: 3.5rem;
@@ -59,12 +63,49 @@ img.header-overlay {
     margin-top: 12rem!important;
 }
 
+/* Featurettes */
 
-
-@media (min-width: 768px) {
-    
-img.header-overlay: 40rem;{
-
+div.container.marketing {
+    margin-top: 2vh;
 }
+
+div.row.featurette {
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.featurette-heading {
+    color: #171A27;
+}
+
+.text-muted {
+    color: #5C677D!important;
+}
+
+
+
+
+
+
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+   
+/* Home Page */
+    div.row.featurette {
+        flex-wrap: wrap;
+    }
+
+    .col-md-5 {
+        min-width: auto;
+    }
+
+    img.header-overlay {
+        margin-bottom: 0rem;
+        width: 80vw;
+        height: 8vh;
+    }
 
 }
