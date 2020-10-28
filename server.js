@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 
 // --------------------- Internal Modules
 // const controllers = require("./controllers");
+const db = require('./models/index');
 
 
 // --------------------- Instanced Modules
