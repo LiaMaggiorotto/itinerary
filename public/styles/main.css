@@ -21,9 +21,9 @@
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active {
-    background-color: #171a27;
-    border-color: #c7cacf;
-    color: #c7cacf;
+    background-color: #2e211a;
+    border-color: #dfe1e1;
+    color: #dfe1e1;
 }
 
 /* Home Page Header Image */
@@ -56,6 +56,23 @@ img.header-overlay {
     background-color: #171a27;
     border-color: #c7cacf;
     color: #dfe1e1;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active{
+    background-color: #2e211a;
+    border-color: #dfe1e1;
+    color: #dfe1e1;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+}
+
+.btn-primary:focus {
+    background-color: #2e211a;
+    border-color: #dfe1e1;
+    color: #dfe1e1;
+    box-shadow: none;
 }
 
 .col-md-5 {

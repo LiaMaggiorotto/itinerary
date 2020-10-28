@@ -5,7 +5,7 @@ const tripSchema = new mongoose.Schema({
     destination: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
-    details: { type: String, required: [true, "Provide a description of this adventure!"]},
+    details: { type: String, required: [true, "Provide a description of this adventure!"] },
     flights: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Flight",
     }],
