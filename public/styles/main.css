@@ -20,6 +20,12 @@
     color: #c7cacf;
 }
 
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+    background-color: #171a27;
+    border-color: #c7cacf;
+    color: #c7cacf;
+}
+
 /* Home Page Header Image */
 
 body {
