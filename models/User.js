@@ -9,10 +9,9 @@ const userSchema = new mongoose.Schema({
     trip: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Trip",
     }]
-}
-{
+}, {
     timestamps: true,
-} 
+    }
 );
 
 const User = mongoose.model("User", userSchema);
