@@ -1,0 +1,70 @@
+/* Navigation Bar */
+
+.navbar {
+    background-color: #5c677d;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-item {
+    list-style: none
+}
+
+.btn-outline-primary {
+    color: #c7cacf;
+    border-color: #c7cacf;
+}
+
+.btn-outline-primary:hover {
+    background-color: #171a27;
+    border-color: #c7cacf;
+    color: #c7cacf;
+}
+
+/* Home Page Image */
+
+.position-relative {
+    margin-top: 3.5rem;
+    background-image: url('https://images.unsplash.com/photo-1496950866446-3253e1470e8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    height: 75vh;
+    background-position: center;
+}
+
+img.header-overlay {
+    height: 7rem;
+    width: 30rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    color: #c7cacf;
+    border-color: #c7cacf;
+    background-color: #5c677D;
+}
+
+.btn-primary:hover {
+    background-color: #171a27;
+    border-color: #c7cacf;
+    color: #dfe1e1;
+}
+
+.col-md-5 {
+    background-color: rgba(223,225,225,.7);
+    color: #33415c;
+    min-width: 40rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.mt-5, .my-5 {
+    margin-top: 12rem!important;
+}
+
+
+
+@media (min-width: 768px) {
+    
+img.header-overlay: 40rem;{
+
+}
+
+}
