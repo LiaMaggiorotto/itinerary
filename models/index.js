@@ -19,3 +19,7 @@ mongoose
 mongoose.connection.on('disconnect', function (event) {
     console.log('Mongodb disconnected', event);
 });
+
+module.exports = {
+    Itinerary: require('./Itinerary'),
+}
