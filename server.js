@@ -22,30 +22,30 @@ app.set("view engine", "ejs");
 
 
 // --------------------- Middleware
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, "/public")));
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.originalUrl}`);
     next();
 });
 
-app.use(session({
-    resave: false,
-    saveUninitialized: false, 
-    secret: "Ugh, as if!", 
-    store: new MongoStore({
-      url: 'mongodb://localhost:27017/itinerary',
-      }),
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 
-      }
-    }));
+// app.use(session({
+//     resave: false,
+//     saveUninitialized: false, 
+//     secret: "Ugh, as if!", 
+//     store: new MongoStore({
+//       url: 'mongodb://localhost:27017/itinerary',
+//       }),
+//       cookie: {
+//         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 
+//       }
+//     }));
 
-app.use(function(req, res, next) {
-    res.locals.user = req.session.currentUser;
-    next();
-    });
+// app.use(function(req, res, next) {
+//     res.locals.user = req.session.currentUser;
+//     next();
+//     });
 
 
 
@@ -56,19 +56,20 @@ app.use(function(req, res, next) {
 
 
 // home
-app.get("/", function (req, res)  {
-    res.render("index", { user: req.session.currentUser });
+app.get('/', function (req, res)  {
+    res.render('index');
 });
 
 
 
 //  Auth Routes
-app.use('/', controllers.auth);
+// app.use('/', controllers.auth);
 
 
 
 // Trip Routes
 // app.use("/user", authRequired, controllers.trips);
+app.use('/trips', controllers.trips);
 
 
 // --------------------- Server Listener
