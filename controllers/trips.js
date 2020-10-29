@@ -5,13 +5,14 @@ const db = require('../models');
 
 const categories = ['Arriving Flights, Departing Flights, Itinerary, Notes'];
 
+
 // --------------------- Index View 
 router.get('/', (req,res) => {
     db.Trip.find({}, (err, allTripsFromDB) => {
         if(err) {
             console.log(err);
         } else {
-            res.render('/trip/tripsIndex.ejs', {
+            res.render('trip/tripsIndex.ejs', {
                 allTrips: allTripsFromDB
             });
         }
