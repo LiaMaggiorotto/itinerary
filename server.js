@@ -9,7 +9,6 @@ const MongoStore = require('connect-mongo')(session);
 // --------------------- Internal Modules
 const db = require('./models/index');
 const controllers = require('./controllers');
-const {authRequired} = require('./controllers/auth');
 
 
 
