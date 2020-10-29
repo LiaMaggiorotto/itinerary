@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 // --------------------- Internal Modules
 const db = require('./models/index');
 const controllers = require('./controllers');
+const {authRequired} = require('./controllers/auth');
 
 
 
@@ -42,6 +43,10 @@ app.use(session({
       }
     }));
 
+app.use(function(req, res, next) {
+    res.locals.user = req.session.currentUser;
+    next();
+    });
 
 
 
@@ -49,13 +54,23 @@ app.use(session({
 
 // View Routes
 
+
+
 // home
 app.get("/", function (req, res)  {
-    res.render("index", {});
+    res.render("index", { user: req.session.currentUser });
 });
+
+
 
 //  Auth Routes
 app.use('/', controllers.auth);
+
+
+
+// Trip Routes
+// app.use("/user", authRequired, controllers.trips);
+
 
 // --------------------- Server Listener
 app.listen(PORT, () => {

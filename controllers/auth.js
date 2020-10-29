@@ -78,7 +78,7 @@ module.exports = router;
 
 module.exports.authRequired = (req, res, next) => {
           if(!req || !req.session || (req.session.cookie['_expires'] - new Date()) < 0) {
-            return res.redirect("/auth/login");
+            return res.redirect("/login");
           }
           next();
 }
