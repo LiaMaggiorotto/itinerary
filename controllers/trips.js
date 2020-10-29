@@ -60,6 +60,19 @@ router.get('/:id', function(req,res) {
 })
 
 
+// --------------------- Delete
+router.delete('/:id', function (req, res) {
+    db.Trip.findByIdAndDelete(req.params.id, (err, oneTripFromDB) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(oneTripFromDB);
+            res.redirect('/trips');
+        }
+    })
+})
+
+
 // --------------------- Edit
 router.get('/:id/edit', function (req,res) {
     db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
@@ -87,7 +100,6 @@ router.put('/:id', function (req, res) {
     })
 })
 
-// --------------------- Delete
 
 
 

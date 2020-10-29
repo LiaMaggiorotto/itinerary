@@ -26,23 +26,28 @@
             </a><br><br>
 
             
-            <input type="submit" value="Update Adventure" /> <input type="reset">
-        </form> <br>
             
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/departures">Departing Flights</a>
-      </div>
-    </div>
-
-    <section>
-      <h3>The Details</h3>
-      <p><%= oneTrip.details %></p>
-    </section>
-
-
+                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
+                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
+                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
+                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/departures">Departing Flights</a>
+            </div>
+        </div>
+        
+        <input type="submit" value="Update" /> <input type="reset">
+    </form>
+     
+        <form action="/trips/<%= oneTrip._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete"/>
+        </form>
+        
+        <section>
+            <h3>The Details</h3>
+            <p><%= oneTrip.details %></p>
+        </section>
+        
+        
 
   </body>
 </main>
