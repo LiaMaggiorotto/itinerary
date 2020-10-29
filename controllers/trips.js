@@ -5,6 +5,7 @@ const db = require('../models');
 
 const categories = ['Arriving Flights, Departing Flights, Itinerary, Notes'];
 
+// base route is /trips
 
 // --------------------- Index View 
 router.get('/', (req,res) => {
@@ -12,7 +13,7 @@ router.get('/', (req,res) => {
         if(err) {
             console.log(err);
         } else {
-            res.render('trip/tripsIndex.ejs', {
+            res.render('trip/tripsIndex', {
                 allTrips: allTripsFromDB
             });
         }
@@ -36,6 +37,7 @@ router.post('/', function (req, res) {
         if(err) {
             console.log(err);
         } else {
+            console.log(req.body);
             console.log(createdTripInDB);
             res.redirect(`/trips`)
         }

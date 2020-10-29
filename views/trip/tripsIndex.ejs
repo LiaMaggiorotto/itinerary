@@ -11,12 +11,23 @@
 </head>
 <main role ="main">
   <body class="home">
-
-    <!-- <%- include('../partials/nav') %> -->
-
+    <nav>
+    <%- include('../partials/nav') %>
+    </nav>
     <!-- trip index view -->
 
- <h1>Upcoming Trips View</h1>
+    <h1 style="padding-top: 4rem;">Upcoming Trips View</h1>
+
+    <ul>
+        <% for (let i=0; i < allTrips.length; i++) { %>
+            <li>
+                <h6><%= allTrips[i].title %></h6>
+                    <small class="text-muted"><%= allTrips[i].destination %></small><br>
+                    <small class="text-muted"><%= allTrips[i].startDate %> - <%= allTrips[i].endDate %></small>
+            </li>
+        <% } %>
+    </ul>
+
 
   </body>
 </main>

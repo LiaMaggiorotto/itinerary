@@ -6,16 +6,25 @@
 
   <title>Add New Trip</title>
 
-  <%- include('partials/style') %>
+  <%- include('../partials/style') %>
 
 </head>
 <main role ="main">
   <body class="home">
 
-    <%- include('partials/nav') %>
+    <%- include('../partials/nav') %>
 
-    <h1>Add New Trip Page</h1>
-
+    <h1 style="padding-top: 4rem;">Add New Adventure Page</h1>
+    <form action ="/trips" method="POST">
+      Title: <input type="text" name="title" /> <br>
+      Destination: <input type="text" name="destination" /><br>
+      Image: <input type="text" name="imageLink" /><br>
+      Trip Start Date: <input type="text" name="startDate" placeholder="MM/DD/YYYY" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}"/><br>
+      Trip End Date: <input type="text" name="endDate" placeholder="MM/DD/YYYY" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" /><br>      
+      Give us some details: <input type="text" name="details" /> <br>
+      <input type="submit" value="Add New Adventure" />
+      <input type="reset">
+      </form>
   </body>
 </main>
 </html> 
