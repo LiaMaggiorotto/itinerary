@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Insert Trip Title</title>
+
+  <%- include('../partials/style') %>
+
+</head>
+<main role ="main">
+  <body class="home">
+
+    <%- include('../partials/nav') %>
+
+    <form action="/trips/<%= oneTrip._id %>?_method=PUT" method="POST">
+        <h1 style="padding-top: 5rem;"><input type="text" name="title" value="<%= oneTrip.title %>"></h1>
+        <h3><input type="text" name="destination" value="<%= oneTrip.destination %>"></h3>
+        <h6><input type="text" name="startDate" value="<%= oneTrip.startDate %>"> - <input type="text" name="endDate" value="<%= oneTrip.endDate %>"> </h6> 
+        
+        <div class="dropdown show">
+            
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Other Trip Details
+            </a><br><br>
+
+            
+            <input type="submit" value="Update Adventure" /> <input type="reset">
+        </form> <br>
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/departures">Departing Flights</a>
+      </div>
+    </div>
+
+    <section>
+      <h3>The Details</h3>
+      <p><%= oneTrip.details %></p>
+    </section>
+
+
+
+  </body>
+</main>
+</html> 

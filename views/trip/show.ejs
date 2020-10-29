@@ -6,15 +6,39 @@
 
   <title>Insert Trip Title</title>
 
-  <%- include('partials/style') %>
+  <%- include('../partials/style') %>
 
 </head>
 <main role ="main">
   <body class="home">
 
-    <%- include('partials/nav') %>
+    <%- include('../partials/nav') %>
 
-    <h1>Trip Detail Page / aka show</h1>
+    <h1 style="padding-top: 5rem;"><%= oneTrip.title %></h1>
+    <h3><%= oneTrip.destination %></h3>
+    <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
+    
+    <div class="dropdown show">
+      
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Other Trip Details
+      </a>
+      
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/">Departing Flights</a>
+      </div>
+    </div>
+    <small class='text-muted'><a href="/trips/<%= oneTrip._id %>/edit">Edit</a></small>
+
+    <section>
+      <h3>The Details</h3>
+      <p><%= oneTrip.details %></p>
+    </section>
+
+
 
   </body>
 </main>

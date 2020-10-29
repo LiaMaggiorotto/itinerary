@@ -17,11 +17,13 @@
     <!-- trip index view -->
 
     <h1 style="padding-top: 4rem;">Upcoming Trips View</h1>
-
+    
     <ul>
         <% for (let i=0; i < allTrips.length; i++) { %>
             <li>
+                <a href="/trips/<%= allTrips[i]._id %>">
                 <h6><%= allTrips[i].title %></h6>
+                </a>
                     <small class="text-muted"><%= allTrips[i].destination %></small><br>
                     <small class="text-muted"><%= allTrips[i].startDate %> - <%= allTrips[i].endDate %></small>
             </li>
