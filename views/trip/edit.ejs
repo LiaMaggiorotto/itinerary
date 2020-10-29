@@ -37,17 +37,23 @@
         
         <input type="submit" value="Update" /> <input type="reset">
     </form>
-     
-        <form action="/trips/<%= oneTrip._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete"/>
-        </form>
+
+    <form action="/trips/<%= oneTrip._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete"/>
+    </form>
+    <!-- Trip -->
+
+    <!-- Trip Description -->
         
+    <h3><%= oneTrip.title %></h3>
+    <form action="/trips/<%= oneTrip._id %>?_method=PUT" method="POST">
         <section>
-            <h3>The Details</h3>
-            <p><%= oneTrip.details %></p>
+            <textarea class="form-control" name="details" rows="3"><%= oneTrip.details %></textarea>
         </section>
+        <input type="submit" value="Update" /> <input type="reset">
+    </form> 
         
-        
+    <!-- End Trip Details -->
 
   </body>
 </main>
