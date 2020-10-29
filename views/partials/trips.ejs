@@ -1,29 +1,21 @@
 
     <!-- trip index view -->
-
-    <div class='sidebar-left container col-sm'>
+    <div class='sidebar-left container col-sm' style="padding-top: 4rem;">
         <div class="sidebar-header">
             <h1 class='sidebar-name'>Upcoming Trips</h1>
         </div>
         <div class="overflow-auto">
             <ul class="list-unstyled components sidebar">
-
-            <% for (let i=0; i < trips.length; i++) { %>
-
-                <li class="sidebar-item">
-                    <a href="#" class="trip-show-link">
-                        <div class="sidebar-btn justify-content-center"><img height="80" src="<%= trips[i].imageLink %>"></div>
-                        <div class="sidebar-trip">
-                            <h6><%= trips[i].title %><h6>
-                            <p class="sidebar-details"><%= trips[i].destination %></p>
-                            <small class="text-muted"><%= trips[i].startDate %> - <%= trips[i].endDate %></small>
-                        </div>
-                    </a>
-                </li>
-            <% } %>
-            
+                <% for (let i=0; i < allTrips.length; i++) { %>
+                    <li class="sidebar-item">
+                        <a href="/trips/<%= allTrips[i]._id %>" class="trip-name-link">
+                            <h6><%= allTrips[i].title %></h6>
+                            <div class="sidebar-btn justify-content-center"><img height="80" src="<%= allTrips[i].imageLink %>"></div>
+                            <small class="sidebar-cities-name text-muted"><%= allTrips[i].destination %></small><br>
+                            <small class="sidebar-cities-name text-muted"><%= allTrips[i].startDate %> - <%= allTrips[i].endDate %></small>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
-        </div>
-    </div>
 
 <!-- end trip index view -->
