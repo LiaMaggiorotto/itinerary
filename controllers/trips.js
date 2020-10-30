@@ -44,11 +44,13 @@ router.post('/', function (req, res) {
     })
 })
 
+
 // --------------------- Show
 router.get('/:id', async function (req,res) {
     try {
         console.log(req.query);
         const selectedCategory = req.query.option;
+        const allTripsFromDB = db.Trip.find({});
         db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
             if(err){
                 console.log(err);
@@ -63,6 +65,7 @@ router.get('/:id', async function (req,res) {
                             oneTrip: oneTripFromDB,
                             selectedCategory: selectedCategory,
                             categories: categories,
+                            allTrips: allTripsFromDB,
                         })
                     }
                 })
@@ -77,6 +80,7 @@ router.get('/:id', async function (req,res) {
                             oneTrip: oneTripFromDB,
                             selectedCategory: selectedCategory,
                             categories: categories,
+                            allTrips: allTripsFromDB,
                         })
                     }
                 })
@@ -91,6 +95,7 @@ router.get('/:id', async function (req,res) {
                             oneTrip: oneTripFromDB,
                             selectedCategory: selectedCategory,
                             categories: categories,
+                            allTrips: allTripsFromDB,
                         })
                     }
                 })
@@ -105,6 +110,7 @@ router.get('/:id', async function (req,res) {
                             oneTrip: oneTripFromDB,
                             selectedCategory: selectedCategory,
                             categories: categories,
+                            allTrips: allTripsFromDB,
                         })
                     }
                 })
@@ -114,6 +120,7 @@ router.get('/:id', async function (req,res) {
                     categories: categories,
                     selectedCategory: selectedCategory,
                     oneTrip: oneTripFromDB,
+                    allTrips: allTripsFromDB
                 }
                 res.render('trip/show', context)
             }}
@@ -122,6 +129,7 @@ router.get('/:id', async function (req,res) {
         res.send(({ message: 'Internal Server Error through Show Route', err: err }))
         }
 })
+
 
 
 // --------------------- Delete

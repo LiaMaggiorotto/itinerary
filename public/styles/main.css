@@ -119,7 +119,7 @@ div.row.featurette {
 /* Trips Partial */
 
 .sidebar-left {
-    background-color: #231e21;
+    background-color: #7d8597;
     color: #dfe1e1;
     max-width: fit-content;
     flex: 3 auto;
@@ -136,8 +136,8 @@ div.row.featurette {
 }
 
 .sidebar-name {
-    background-color: rgba(223,225,225,.8);
-    color: #171A27;
+    background-color: rgba(23,26,39,.6);
+    color: #dfe1e1;
     padding: 2vh;
     border-radius: 10px;
 }

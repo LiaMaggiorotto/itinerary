@@ -20,14 +20,14 @@
     <div class="parent-container d-flex" id="profile_parent_container">
       <!-- Left Section -->
 
-
+      <%- include('../partials/trips') %>
 
       <!-- Right Section -->
 
       <div class="container col-8 posts-list">
 
         <!-- Trip Detail -->
-        <h1 style="padding-top: 5rem;"><%= oneTrip.title %></h1>
+        <h1><%= oneTrip.title %></h1>
         <h3><%= oneTrip.destination %></h3>
         <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
 
