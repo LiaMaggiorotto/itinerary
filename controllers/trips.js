@@ -52,6 +52,7 @@ router.get('/:id', async function (req,res) {
         db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
             if(err){
                 console.log(err);
+
             } else if( selectedCategory === 'itinerary') {
                 db.Itinerary.find({}, (err, foundEvents) => {
                     if(err) {
@@ -59,14 +60,55 @@ router.get('/:id', async function (req,res) {
                     } else {
                         res.render('trip/show', {
                             events: foundEvents, 
+                            oneTrip: oneTripFromDB,
+                            selectedCategory: selectedCategory,
+                            categories: categories,
                         })
                     }
                 })
-            }else if( selectedCategory === 'notes' ) {
-                const foundNotes = db.Note.find({}, { notes: foundNotes })
-            } else if( selectedCategory=== 'flights') {
-                const arrivalFlights = db.Flight.find({ category: 'arrival'}, {arrivals: arrivalFlights});
-                const departingFlights = db.Flight.find({ category: 'departure'}, {departures: departingFlights});
+
+            } else if( selectedCategory === 'notes') {
+                db.Note.find({}, (err, foundNotes) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        res.render('trip/show', {
+                            notes: foundNotes, 
+                            oneTrip: oneTripFromDB,
+                            selectedCategory: selectedCategory,
+                            categories: categories,
+                        })
+                    }
+                })
+
+            } else if( selectedCategory === 'arrivals') {
+                db.Flight.find({}, (err, foundArrivals) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        res.render('trip/show', {
+                            arrivals: foundArrivals, 
+                            oneTrip: oneTripFromDB,
+                            selectedCategory: selectedCategory,
+                            categories: categories,
+                        })
+                    }
+                })
+
+            } else if( selectedCategory === 'departures') {
+                db.Flight.find({}, (err, foundDepartures) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        res.render('trip/show', {
+                            departures: foundDepartures, 
+                            oneTrip: oneTripFromDB,
+                            selectedCategory: selectedCategory,
+                            categories: categories,
+                        })
+                    }
+                })
+
             } else {
                 const context = {
                     categories: categories,

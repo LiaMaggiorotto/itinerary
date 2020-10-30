@@ -5,6 +5,7 @@ body {
 }
 
 #profile_parent_container {
+    margin-top: 10vh;
     flex-wrap: wrap;
 }
 
@@ -120,7 +121,6 @@ div.row.featurette {
 .sidebar-left {
     background-color: #231e21;
     color: #dfe1e1;
-    margin-top: 10vh;
     max-width: fit-content;
     flex: 3 auto;
     text-align: left;
