@@ -50,25 +50,25 @@ router.get('/:id', async function (req,res) {
     try {
         console.log(req.query);
         const selectedCategory = req.query.option;
-        const allTripsFromDB = db.Trip.find({});
         db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
-            if(err){
-                console.log(err);
+            db.Trip.find({}, (err, allTripsFromDB) => {
+                if(err){
+                    console.log(err);
 
-            } else if( selectedCategory === 'itinerary') {
-                db.Itinerary.find({}, (err, foundEvents) => {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        res.render('trip/show', {
-                            events: foundEvents, 
-                            oneTrip: oneTripFromDB,
-                            selectedCategory: selectedCategory,
-                            categories: categories,
-                            allTrips: allTripsFromDB,
-                        })
-                    }
-                })
+                } else if( selectedCategory === 'itinerary') {
+                    db.Itinerary.find({}, (err, foundEvents) => {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            res.render('trip/show', {
+                                events: foundEvents, 
+                                oneTrip: oneTripFromDB,
+                                selectedCategory: selectedCategory,
+                                categories: categories,
+                                allTrips: allTripsFromDB,
+                            })
+                        }
+                    })
 
             } else if( selectedCategory === 'notes') {
                 db.Note.find({}, (err, foundNotes) => {
@@ -124,10 +124,11 @@ router.get('/:id', async function (req,res) {
                 }
                 res.render('trip/show', context)
             }}
-        )
+            )
+        })
     } catch (err) {
-        res.send(({ message: 'Internal Server Error through Show Route', err: err }))
-        }
+            res.send(({ message: 'Internal Server Error through Show Route', err: err }))
+            }
 })
 
 
