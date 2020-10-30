@@ -12,11 +12,15 @@
 <main role ="main">
   <body class="home">
 
+    <!-- Nav Bar -->
     <%- include('../partials/nav') %>
 
+    <!-- Trip Detail -->
     <h1 style="padding-top: 5rem;"><%= oneTrip.title %></h1>
     <h3><%= oneTrip.destination %></h3>
     <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
+
+    <!-- Select Trip Detail View -->
     
     <div class="dropdown show">
       
@@ -25,20 +29,61 @@
       </a>
       
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
-        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/">Departing Flights</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arriving Flights</a>
+        <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departing Flights</a>
       </div>
     </div>
     <small class='text-muted'><a href="/trips/<%= oneTrip._id %>/edit">Edit</a></small>
 
-    <section>
-      <h3><%= oneTrip.title %></h3>
-      <p><%= oneTrip.details %></p>
-    </section>
+    <!-- Bottom View : Where Selected Options Dislay -->
+
+    <div>
+
+      <!-- No category selected -->
+      <% if(!selectedCategory) { %>
+        <section>
+          <h3><%= oneTrip.title %></h3>
+          <p><%= oneTrip.details %></p>
+        </section>
+
+      <!-- Itinerary -->
+
+      <% } else if(selectedCategory === 'itinerary') { %>
+        <h3>Itinerary</h3>
+
+        <ul>
+        <% for(let i=0; i < events.length; i++) { %>
+          <li>
+            <h6><%= events[i].title %> </h6>
+            <small class="text-muted"><%= events[i].date %></small>
+            <small>Starting at <%= events[i].time %></small>
+            <small>Location: <%= events[i].time %></small>
+          </li>
+          <% } %>
+        </ul>
+
+        <% if(events.length === 0) { %>
+          <h6>There are no events added for this trip. Let's get planning!</h6>
+        }
+
+      <!-- Notes -->
 
 
+
+
+      <!-- Arrivals -->
+
+
+
+
+      <!-- Departures -->
+
+
+      
+      <% } %>
+    </div>
 
   </body>
 </main>

@@ -46,13 +46,23 @@ router.post('/', function (req, res) {
 
 // --------------------- Show
 router.get('/:id', function(req,res) {
+    console.log(req.query);
+    const foundNotes = db.Note.find({})
+    const foundEvents = db.Itinerary.find({});
+    const arrivalFlights = db.Flight.find({ category: 'arrival' });
+    const departingFlights = db.Flight.find({ category: 'departure' });
     db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
         if(err){
             console.log(err);
         } else {
             const context = {
                 categories: categories,
-                oneTrip: oneTripFromDB
+                selectedCategory: req.query.option,
+                oneTrip: oneTripFromDB,
+                events: foundEvents,
+                notes: foundNotes,
+                arrivals: arrivalFlights,
+                departures: departingFlights,
             }
             res.render('trip/show', context)
         }
