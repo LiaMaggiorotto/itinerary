@@ -1,21 +1,24 @@
 
 <!-- trip index view -->
-    <div class='sidebar-left container col-sm' style="padding-top: 4rem;">
-        <div class="sidebar-header">
-            <h1 class='sidebar-name'>Upcoming Trips</h1>
-        </div>
-        <div class="overflow-auto">
-            <ul class="list-unstyled components sidebar">
-                <% for (let i=0; i < allTrips.length; i++) { %>
-                    <li class="sidebar-item">
-                        <a href="/trips/<%= allTrips[i]._id %>" class="trip-name-link">
-                            <h6><%= allTrips[i].title %></h6>
-                            <div class="sidebar-btn justify-content-center"><img height="80" src="<%= allTrips[i].imageLink %>"></div>
-                            <small class="sidebar-cities-name text-muted"><%= allTrips[i].destination %></small><br>
-                            <small class="sidebar-cities-name text-muted"><%= allTrips[i].startDate %> - <%= allTrips[i].endDate %></small>
-                        </a>
-                    </li>
-                <% } %>
-            </ul>
+ 
+<div class="sidebar-left container col-sm">
+    <div class="sidebar-header">
+        <h2 class="sidebar-name">Upcoming Trips</h2>
+    </div>
+    <div class="overflow-auto">
+        <ul class="list-unstyled components sidebar">
+            <% for (let i=0; i < allTrips.length; i++) { %>
+                <li class="sidebar-item">
+                    <a href="/trips/<%= allTrips[i]._id %>" class="trip-name-link">
+                    <div class="sidebar-btn justify-content-center"><img height="80" src="<%= allTrips[i].imageLink %>"></div>
+                    <div class="sidebar-trip-name"><%= allTrips[i].title %></div>
+                    <small class="sidebar-cities-name text-muted"><%= allTrips[i].destination %></small><br>
+                    <small class="sidebar-cities-name text-muted"><%= allTrips[i].startDate %> - <%= allTrips[i].endDate %></small>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
 
 <!-- end trip index view -->

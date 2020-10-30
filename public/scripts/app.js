@@ -1,2 +1,2 @@
-console.log("it's Britney b*itch");
+console.log("it's Britney b*tch");
 

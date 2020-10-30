@@ -1,3 +1,14 @@
+
+body {
+    color: #171A27;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#profile_parent_container {
+    flex-wrap: wrap;
+}
+
+
 /* Navigation Bar */
 
 .navbar {
@@ -26,11 +37,9 @@
     color: #dfe1e1;
 }
 
-/* Home Page Header Image */
+/* Home Page:
+ Header Image */
 
-body {
-    color: #171A27;
-}
 
 .position-relative {
     margin-top: 3.5rem;
@@ -106,11 +115,36 @@ div.row.featurette {
 }
 
 
+/* Trips Partial */
 
+.sidebar-left {
+    background-color: #231e21;
+    color: #dfe1e1;
+    margin-top: 10vh;
+    max-width: fit-content;
+    flex: 3 auto;
+    text-align: left;
+    font-size: 20px;
+    padding: 30px;
+    height: fit-content;
+    max-height: 80vh;
+    border-radius: 10px;
+}
 
+.overflow-auto {
+    max-height: 500px;
+}
 
+.sidebar-name {
+    background-color: rgba(223,225,225,.8);
+    color: #171A27;
+    padding: 2vh;
+    border-radius: 10px;
+}
 
-
+.sidebar-item {
+    margin-top: 4vh;
+}
 
 /* Media Queries */
 

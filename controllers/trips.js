@@ -45,28 +45,40 @@ router.post('/', function (req, res) {
 })
 
 // --------------------- Show
-router.get('/:id', function(req,res) {
-    console.log(req.query);
-    const foundNotes = db.Note.find({})
-    const foundEvents = db.Itinerary.find({});
-    const arrivalFlights = db.Flight.find({ category: 'arrival' });
-    const departingFlights = db.Flight.find({ category: 'departure' });
-    db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
-        if(err){
-            console.log(err);
-        } else {
-            const context = {
-                categories: categories,
-                selectedCategory: req.query.option,
-                oneTrip: oneTripFromDB,
-                events: foundEvents,
-                notes: foundNotes,
-                arrivals: arrivalFlights,
-                departures: departingFlights,
-            }
-            res.render('trip/show', context)
+router.get('/:id', async function (req,res) {
+    try {
+        console.log(req.query);
+        const selectedCategory = req.query.option;
+        db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
+            if(err){
+                console.log(err);
+            } else if( selectedCategory === 'itinerary') {
+                db.Itinerary.find({}, (err, foundEvents) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        res.render('trip/show', {
+                            events: foundEvents, 
+                        })
+                    }
+                })
+            }else if( selectedCategory === 'notes' ) {
+                const foundNotes = db.Note.find({}, { notes: foundNotes })
+            } else if( selectedCategory=== 'flights') {
+                const arrivalFlights = db.Flight.find({ category: 'arrival'}, {arrivals: arrivalFlights});
+                const departingFlights = db.Flight.find({ category: 'departure'}, {departures: departingFlights});
+            } else {
+                const context = {
+                    categories: categories,
+                    selectedCategory: selectedCategory,
+                    oneTrip: oneTripFromDB,
+                }
+                res.render('trip/show', context)
+            }}
+        )
+    } catch (err) {
+        res.send(({ message: 'Internal Server Error through Show Route', err: err }))
         }
-    })
 })
 
 
