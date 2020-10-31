@@ -9,151 +9,162 @@
   <%- include('../partials/style') %>
 
 </head>
-<main role ="main">
-  <body class="home">
+
+  <body>
     
     
     
-    <!-- Left Section -->
-    <div class="parent-container d-flex" id="profile_parent_container">
+    <div class="layout layout-nav-side">
+
       
-          <!-- Nav Bar -->
+      <!-- Nav Bar -->
       <%- include('../partials/nav2') %>
 
-      <!-- Right Section -->
+     
+     
+      <!-- Main Section -->
 
       
       <!-- Trip Detail -->
-        <div class="container col-8 posts-list">
-          <div class="post-show-container">
-            <div class="post-detail-image" style="background-image: url('<%= oneTrip.imageLink %>');">
-              <div class="show-overlay">
-                <h1><%= oneTrip.title %></h1>
-                <h3><%= oneTrip.destination %></h3>
-                <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
-                
-                <!-- Select Trip Detail View -->
-                
-                <div class="dropdown show">
-                  
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Other Trip Details
-                  </a>
-               
-                
-                  
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
-                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
-                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arriving Flights</a>
-                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departing Flights</a>
-                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>  
+        <div class="main-container">
+          <div class="container" id="show-page-header"> 
+            <div class="row justify-content-center">
+              <div class="col-lg-11 col-xl-9">
+                <section class="py-4 py-g-5">
 
+                  <div class="post-detail-image" style="background-image: url('<%= oneTrip.imageLink %>');">
+                    <div class="show-overlay">
+                      <h1><%= oneTrip.title %></h1>
+                      <h3><%= oneTrip.destination %></h3>
+                      <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
+                      
+                      <!-- Select Trip Detail View -->
+                      
+                      <div class="dropdown show">
+                        
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Other Trip Details
+                        </a>
+                    
+                      
+                        
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
+                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
+                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arrivals</a>
+                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departures</a>
+                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </section>
 
 
             
         <!-- Bottom View : Where Selected Options Dislay -->
 
-        <div class="container posts-list">
+                <section class="py-4 py-g-5">
+  
+                  <div class="container posts-list">
 
-          <!-- No category selected -->
+                    <!-- No category selected -->
 
-          <% if(!selectedCategory) { %>
-            <section>
-              <h3><%= oneTrip.title %></h3>
-              <p><%= oneTrip.details %></p>
-            </section>
+                    <% if(!selectedCategory) { %>
+                      <section>
+                        <h3><%= oneTrip.title %></h3>
+                        <p><%= oneTrip.details %></p>
+                      </section>
 
-          <!-- Itinerary -->
+                    <!-- Itinerary -->
 
-          <% } else if(selectedCategory === 'itinerary') { %>
-            <h3>Itinerary</h3>
+                    <% } else if(selectedCategory === 'itinerary') { %>
+                      <h3>Itinerary</h3>
 
-            <ul>
-            <% for(let i=0; i < events.length; i++) { %>
-              <li>
-                <h6><%= events[i].title %> </h6>
-                <small class="text-muted"><%= events[i].date %></small>
-                <small>Starting at <%= events[i].time %></small>
-                <small>Location: <%= events[i].time %></small>
-              </li>
-              <% } %>
-            </ul>
+                      <ul>
+                      <% for(let i=0; i < events.length; i++) { %>
+                        <li>
+                          <h6><%= events[i].title %> </h6>
+                          <small class="text-muted"><%= events[i].date %></small>
+                          <small>Starting at <%= events[i].time %></small>
+                          <small>Location: <%= events[i].time %></small>
+                        </li>
+                        <% } %>
+                      </ul>
 
-            <% if(events.length === 0) { %>
-              <h6>There are no events added for this trip. Let's get planning!</h6>
-            <% } %>
-            
+                      <% if(events.length === 0) { %>
+                        <h6>There are no events added for this trip. Let's get planning!</h6>
+                      <% } %>
+                      
 
-          <!-- Notes -->
+                    <!-- Notes -->
 
-          <% } else if(selectedCategory === 'notes') { %>
-              <h3>Notes</h3>
-              <ul>
-                <% for(let i=0; i < notes.length; i++) { %>
-                  <li>
-                    <h6><a href="<%= notes[i].link %>"><%= notes[i].title %> </a></h6>
-                    <small><%= notes[i].description %></small>
-                  </li>
-                  <% } %>
-              </ul>
+                    <% } else if(selectedCategory === 'notes') { %>
+                        <h3>Notes</h3>
+                        <ul>
+                          <% for(let i=0; i < notes.length; i++) { %>
+                            <li>
+                              <h6><a href="<%= notes[i].link %>"><%= notes[i].title %> </a></h6>
+                              <small><%= notes[i].description %></small>
+                            </li>
+                            <% } %>
+                        </ul>
 
-              <% if(notes.length === 0) { %>
-                <h6>You haven't saved any notes yet!</h6>
-                <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
-              <% } %>
+                        <% if(notes.length === 0) { %>
+                          <h6>You haven't saved any notes yet!</h6>
+                          <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
+                        <% } %>
 
-              
-          <!-- Arrivals -->
-          
-          <% } else if(selectedCategory === 'arrivals') { %>
-              <h3>Arrivals</h3>
-              <ul>
-                <% for(let i=0; i < arrivals.length; i++) { %>
-                  <li>
-                    <h6><%= arrivals[i].guest %></h6>
-                    <small>Departing from <%= arrivals[i].departureCity %> on <%= arrivals[i].departureDate %> at <%= arrivals[i].departureTime %></small>
-                    <small>Arriving to <%= arrivals[i].arrivalCity %> on <%= arrivals[i].arrivalDate %> at <%= arrivals[i].arrivalTime %> </small>
-                  </li>
-                  <% } %>
-              </ul>
+                        
+                    <!-- Arrivals -->
+                    
+                    <% } else if(selectedCategory === 'arrivals') { %>
+                        <h3>Arrivals</h3>
+                        <ul>
+                          <% for(let i=0; i < arrivals.length; i++) { %>
+                            <li>
+                              <h6><%= arrivals[i].guest %></h6>
+                              <small>Departing from <%= arrivals[i].departureCity %> on <%= arrivals[i].departureDate %> at <%= arrivals[i].departureTime %></small>
+                              <small>Arriving to <%= arrivals[i].arrivalCity %> on <%= arrivals[i].arrivalDate %> at <%= arrivals[i].arrivalTime %> </small>
+                            </li>
+                            <% } %>
+                        </ul>
 
-              <% if(arrivals.length === 0) { %>
-                <h6>You haven't saved any arriving flights yet!</h6>
-                <small>Add all guests flights here to better coordinate transfers from the airport to your accomodations</small>
-              <% } %>
-
-
-          <!-- Departures -->
-
-          <% } else if (selectedCategory === 'departures') { %>
-            <h3>Departs</h3>
-            <ul>
-              <% for(let i=0; i < departures.length; i++) { %>
-                <li>
-                  <h6><%= departures[i].guest %></h6>
-                  <small>Departing from <%= departures[i].departureCity %> on <%= departures[i].departureDate %> at <%= departures[i].departureTime %></small>
-                  <small>Arriving to <%= departures[i].arrivalCity %> on <%= departures[i].arrivalDate %> at <%= departures[i].arrivalTime %> </small>
-                </li>
-                <% } %>
-            </ul>
-
-            <% if(departures.length === 0) { %>
-              <h6>You haven't saved any departing flights yet!</h6>
-              <small>Add all guests flights here to better coordinate transfers from your accomodations to the airport</small>
-            <% } %>
-
-          <% } %>
+                        <% if(arrivals.length === 0) { %>
+                          <h6>You haven't saved any arriving flights yet!</h6>
+                          <small>Add all guests flights here to better coordinate transfers from the airport to your accomodations</small>
+                        <% } %>
 
 
+                    <!-- Departures -->
+
+                    <% } else if (selectedCategory === 'departures') { %>
+                      <h3>Departs</h3>
+                      <ul>
+                        <% for(let i=0; i < departures.length; i++) { %>
+                          <li>
+                            <h6><%= departures[i].guest %></h6>
+                            <small>Departing from <%= departures[i].departureCity %> on <%= departures[i].departureDate %> at <%= departures[i].departureTime %></small>
+                            <small>Arriving to <%= departures[i].arrivalCity %> on <%= departures[i].arrivalDate %> at <%= departures[i].arrivalTime %> </small>
+                          </li>
+                          <% } %>
+                      </ul>
+
+                      <% if(departures.length === 0) { %>
+                        <h6>You haven't saved any departing flights yet!</h6>
+                        <small>Add all guests flights here to better coordinate transfers from your accomodations to the airport</small>
+                      <% } %>
+
+                    <% } %>
+
+
+                  </div>
         </div>
+        </div> 
+        </div> 
       </div>
     </div>
   </body>
-</main>
+
 </html> 

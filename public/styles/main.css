@@ -6,11 +6,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-#profile_parent_container {
-    margin-top: 10vh;
-    flex-wrap: wrap;
+div.layout.layout-nav-side {
+    display: flex;
 }
-
 
 /* Navigation Bar */
 
@@ -58,6 +56,10 @@ img#nav-two-logo {
 
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #dfe1e1,
+}
+
+#navbar2-brand {
+    margin-right: 0;
 }
 
 
@@ -142,40 +144,17 @@ hr {
     border-top: 2px solid rgba(46,33,26,1);
 }
 
-/* Trips Partial */
 
-.sidebar-left {
-    background-color: #7d8597;
-    color: #dfe1e1;
-    max-width: fit-content;
-    flex: 3 auto;
-    text-align: left;
-    font-size: 20px;
-    padding: 30px;
-    height: fit-content;
-    max-height: 80vh;
-    border-radius: 10px;
+/* Show Page */
+
+div#show-page-header.container {
+    width: 100vw;
 }
 
-.overflow-auto {
-    max-height: 500px;
-}
-
-.sidebar-name {
-    background-color: rgba(23,26,39,.6);
-    color: #dfe1e1;
-    padding: 2vh;
-    border-radius: 10px;
-}
-
-.sidebar-item {
-    margin-top: 4vh;
-}
-
-
-/* Trip Detail View - Top */
-
-.post-show-container {
+.container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 6rem;
     text-align: center;
 }
 
@@ -190,47 +169,59 @@ hr {
 }
 
 .show-overlay {
-    /* background-color: rgba(223,225,225,.5); */
     padding-top: 7%;
-    /* width: fit-content;
-    height: fit-content; */
 }
 
 
 /* Media Queries */
 
 @media only screen and (max-width: 600px) {
-  
-/* Home Page */
+    
+    /* Home Page */
     div.row.featurette {
         flex-wrap: wrap;
     }
-
+    
     .col-md-5 {
         min-width: auto;
     }
-
+    
     img.header-overlay {
         margin-bottom: 0rem;
         width: 80vw;
         height: 8vh;
     }
-
+    
     .position-relative {
         height: 60vh;
     }
-
-/* Nav Bar Two */
-
+    
+    /* Nav Bar Two */
+    
     #navbar-two {
         flex-direction: row;
         min-width: 100vw;
         min-height: min-content;
-}
-
+    }
+    
     img#nav-two-logo {
         height: 40px;
         width: 120px;
         margin-bottom: 0;
     }
+
+    /* Show Page */
+    
+    #show-page-header {
+        padding: 15px;
+    }
+    
+    div.layout.layout-nav-side {
+        display: block;
+    }
+    
+    div#show-page-header.container {
+        width: 100%;
+    }
+
 }
