@@ -40,6 +40,27 @@ body {
     color: #dfe1e1;
 }
 
+/* Second Nav Bar */
+
+#navbar-two{
+    flex-direction: column;
+    max-width: fit-content;
+    min-height: 100vh;
+}
+
+img#nav-two-logo {
+    margin-bottom: 3vh;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #c7cacf,
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #dfe1e1,
+}
+
+
 /* Home Page:
  Header Image */
 
@@ -199,4 +220,17 @@ hr {
         height: 60vh;
     }
 
+/* Nav Bar Two */
+
+    #navbar-two {
+        flex-direction: row;
+        min-width: 100vw;
+        min-height: min-content;
+}
+
+    img#nav-two-logo {
+        height: 40px;
+        width: 120px;
+        margin-bottom: 0;
+    }
 }
