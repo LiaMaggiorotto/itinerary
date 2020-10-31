@@ -17,40 +17,50 @@
 
     
     
-    <div class="parent-container d-flex" id="profile_parent_container">
-      <!-- Left Section -->
-
+    <!-- Left Section -->
+      <div class="parent-container d-flex" id="profile_parent_container">
       <%- include('../partials/trips') %>
 
       <!-- Right Section -->
 
-      <div class="container col-8 posts-list">
+      
+      <!-- Trip Detail -->
+        <div class="container col-8 posts-list">
+          <div class="post-show-container">
+            <div class="post-detail-image" style="background-image: url('<%= oneTrip.imageLink %>');">
+              <div class="show-overlay">
+                <h1><%= oneTrip.title %></h1>
+                <h3><%= oneTrip.destination %></h3>
+                <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
+                
+                <!-- Select Trip Detail View -->
+                
+                <div class="dropdown show">
+                  
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Other Trip Details
+                  </a>
+               
+                
+                  
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
+                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
+                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arriving Flights</a>
+                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departing Flights</a>
+                    <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
 
-        <!-- Trip Detail -->
-        <h1><%= oneTrip.title %></h1>
-        <h3><%= oneTrip.destination %></h3>
-        <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
 
-        <!-- Select Trip Detail View -->
-        
-        <div class="dropdown show">
-          
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Other Trip Details
-          </a>
-          
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
-            <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
-            <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arriving Flights</a>
-            <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departing Flights</a>
-          </div>
-        </div>
-        <small class='text-muted'><a href="/trips/<%= oneTrip._id %>/edit">Edit</a></small>
 
+            
         <!-- Bottom View : Where Selected Options Dislay -->
 
-        <div>
+        <div class="container posts-list">
 
           <!-- No category selected -->
 

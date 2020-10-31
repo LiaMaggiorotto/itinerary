@@ -2,6 +2,8 @@
 body {
     color: #171A27;
     font-family: 'Montserrat', sans-serif;
+    background-color: #dfe1e1;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #profile_parent_container {
@@ -115,6 +117,9 @@ div.row.featurette {
     color: #5C677D!important;
 }
 
+hr {
+    border-top: 2px solid rgba(46,33,26,1);
+}
 
 /* Trips Partial */
 
@@ -145,6 +150,31 @@ div.row.featurette {
 .sidebar-item {
     margin-top: 4vh;
 }
+
+
+/* Trip Detail View - Top */
+
+.post-show-container {
+    text-align: center;
+}
+
+.post-detail-image {
+    background-position: center top;
+    opacity: 0.5;
+    background-size: cover;
+    min-width: 100%;
+    min-height: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+.show-overlay {
+    /* background-color: rgba(223,225,225,.5); */
+    padding-top: 7%;
+    /* width: fit-content;
+    height: fit-content; */
+}
+
 
 /* Media Queries */
 
