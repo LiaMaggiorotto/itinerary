@@ -21,23 +21,6 @@ div.layout.layout-nav-side {
     list-style: none
 }
 
-.btn-outline-primary {
-    color: #c7cacf;
-    border-color: #c7cacf;
-}
-
-.btn-outline-primary:hover {
-    background-color: #171a27;
-    border-color: #c7cacf;
-    color: #c7cacf;
-}
-
-.btn-outline-primary:not(:disabled):not(.disabled):active {
-    background-color: #5c677d;
-    border-color: #dfe1e1;
-    color: #dfe1e1;
-}
-
 /* Login Modal */
 
 .modal-content {
@@ -67,6 +50,10 @@ div.layout.layout-nav-side {
     margin-top: -16px;
     margin-left: 38px;
 }
+
+.modal-backdrop {
+    z-index: -1;
+  }
 
 
 /* Second Nav Bar */
