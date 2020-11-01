@@ -31,55 +31,60 @@
             <div class="row justify-content-center">
               <div class="col-lg-11 col-xl-9">
                 <section class="py-4 py-g-5">
-
                   <div class="post-detail-image" style="background-image: url('<%= oneTrip.imageLink %>');">
                     <div class="show-overlay">
                       <h1><%= oneTrip.title %></h1>
                       <h3><%= oneTrip.destination %></h3>
                       <h6><%= oneTrip.startDate %> - <%= oneTrip.endDate %> </h6>
-                      
-                      <!-- Select Trip Detail View -->
-                      
-                      <div class="dropdown show">
-                        
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Other Trip Details
-                        </a>
-                    
-                      
-                        
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=itinerary">Itinerary</a>
-                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
-                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=arrivals">Arrivals</a>
-                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>?option=departures">Departures</a>
-                          <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
-                        </div>
-                      </div>
                     </div>
                   </div>
-
                 </section>
+                
+                <!-- Trip Detail -->
+        
+                  <section class="py-4 py-g-5">
+                    <p><%= oneTrip.details %></p>
+                  </section>
+              
+                <!-- Trip Details Tabs -->
 
+                  <section class="py-4 py-g-5">
 
-            
-        <!-- Bottom View : Where Selected Options Dislay -->
+                    <ul class="nav nav-tabs nav-fill" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/trips/<%= oneTrip._id %>?option=itinerary"> Itinerary</a>
+                      </li>
+
+                      <li>
+                        <a class="nav-link" href="/trips/<%= oneTrip._id %>?option=notes">Notes</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="/trips/<%= oneTrip._id %>?option=arrivals">Arrivals</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="/trips/<%= oneTrip._id %>?option=departures">Departures</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                      </li>
+
+                    </ul>
+
+                  </section>
+
+        <!-- end tabs -->
 
                 <section class="py-4 py-g-5">
   
                   <div class="container posts-list">
 
-                    <!-- No category selected -->
-
-                    <% if(!selectedCategory) { %>
-                      <section>
-                        <h3><%= oneTrip.title %></h3>
-                        <p><%= oneTrip.details %></p>
-                      </section>
 
                     <!-- Itinerary -->
 
-                    <% } else if(selectedCategory === 'itinerary') { %>
+                    <% if(selectedCategory === 'itinerary') { %>
                       <h3>Itinerary</h3>
 
                       <ul>
