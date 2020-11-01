@@ -185,15 +185,16 @@ div#show-page-header.container {
     flex: inherit!important;
 }
 
-a.nav-link {
+a.nav-link.show {
     color: #33415C;
+    text-decoration: none;
 }
 
-a.nav-link:hover {
+a.nav-link.show:hover {
     background-color: #dfe1e1;
 }
 
-a.nav-link:not(:disabled):not(.disabled):active {
+a.nav-link.show:not(:disabled):not(.disabled):active {
     background-color: #dfe1e1;
 }
 
