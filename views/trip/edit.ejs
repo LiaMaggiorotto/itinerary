@@ -12,7 +12,7 @@
 <main role ="main">
   <body class="home">
 
-    <%- include('../partials/nav') %>
+    <%- include('../partials/nav2') %>
 
     <form action="/trips/<%= oneTrip._id %>?_method=PUT" method="POST">
         <h1 style="padding-top: 5rem;"><input type="text" name="title" value="<%= oneTrip.title %>"></h1>
@@ -26,13 +26,6 @@
             </a><br><br>
 
             
-            
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/itinerary">Itinerary</a>
-                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/notes">Notes</a>
-                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/arrivals">Arriving Flights</a>
-                <a class="dropdown-item" href="/trips/<%= oneTrip._id %>/departures">Departing Flights</a>
-            </div>
         </div>
         
         <input type="submit" value="Update" /> <input type="reset">

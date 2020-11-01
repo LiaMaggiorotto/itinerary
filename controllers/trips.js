@@ -3,8 +3,6 @@ const router = express.Router();
 
 const db = require('../models');
 
-const categories = ['Itinerary', 'Arriving Flights', 'Departing Flights', 'Notes'];
-
 // base route is /trips
 
 // --------------------- Index View 
@@ -52,6 +50,20 @@ router.get('/:id', async function (req,res) {
         const selectedCategory = req.query.option;
         db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
             db.Trip.find({}, (err, allTripsFromDB) => {
+                if (err) {
+                    console.log(err);
+                } else if (selectedCategory === 'edit') {
+                    const context = {
+                        oneTrip: oneTripFromDB,
+                        selectedCategory: selectedCategory,
+                        allTrips: allTripsFromDB,
+                    }
+                    res.render('trip/show', context)
+                }
+            })
+        })
+        db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
+            db.Trip.find({}, (err, allTripsFromDB) => {
                 if(err){
                     console.log(err);
 
@@ -64,68 +76,63 @@ router.get('/:id', async function (req,res) {
                                 events: foundEvents, 
                                 oneTrip: oneTripFromDB,
                                 selectedCategory: selectedCategory,
-                                categories: categories,
                                 allTrips: allTripsFromDB,
                             })
                         }
                     })
 
-            } else if( selectedCategory === 'notes') {
-                db.Note.find({}, (err, foundNotes) => {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        res.render('trip/show', {
-                            notes: foundNotes, 
-                            oneTrip: oneTripFromDB,
-                            selectedCategory: selectedCategory,
-                            categories: categories,
-                            allTrips: allTripsFromDB,
-                        })
-                    }
-                })
+                } else if( selectedCategory === 'notes') {
+                    db.Note.find({}, (err, foundNotes) => {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            res.render('trip/show', {
+                                notes: foundNotes, 
+                                oneTrip: oneTripFromDB,
+                                selectedCategory: selectedCategory,
+                                allTrips: allTripsFromDB,
+                            })
+                        }
+                    })
 
-            } else if( selectedCategory === 'arrivals') {
-                db.Flight.find({}, (err, foundArrivals) => {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        res.render('trip/show', {
-                            arrivals: foundArrivals, 
-                            oneTrip: oneTripFromDB,
-                            selectedCategory: selectedCategory,
-                            categories: categories,
-                            allTrips: allTripsFromDB,
-                        })
-                    }
-                })
+                } else if( selectedCategory === 'arrivals') {
+                    db.Flight.find({}, (err, foundArrivals) => {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            res.render('trip/show', {
+                                arrivals: foundArrivals, 
+                                oneTrip: oneTripFromDB,
+                                selectedCategory: selectedCategory,
+                                allTrips: allTripsFromDB,
+                            })
+                        }
+                    })
 
-            } else if( selectedCategory === 'departures') {
-                db.Flight.find({}, (err, foundDepartures) => {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        res.render('trip/show', {
-                            departures: foundDepartures, 
-                            oneTrip: oneTripFromDB,
-                            selectedCategory: selectedCategory,
-                            categories: categories,
-                            allTrips: allTripsFromDB,
-                        })
-                    }
-                })
+                } else if( selectedCategory === 'departures') {
+                    db.Flight.find({}, (err, foundDepartures) => {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            res.render('trip/show', {
+                                departures: foundDepartures, 
+                                oneTrip: oneTripFromDB,
+                                selectedCategory: selectedCategory,
+                                allTrips: allTripsFromDB,
+                            })
+                        }
+                    })
 
-            } else {
-                const context = {
-                    categories: categories,
-                    selectedCategory: selectedCategory,
-                    oneTrip: oneTripFromDB,
-                    allTrips: allTripsFromDB
-                }
-                res.render('trip/show', context)
-            }}
-            )
-        })
+                } else {
+                    const context = {
+                        selectedCategory: selectedCategory,
+                        oneTrip: oneTripFromDB,
+                        allTrips: allTripsFromDB
+                    }
+                    res.render('trip/show', context)
+                }}
+                )
+            })
     } catch (err) {
             res.send(({ message: 'Internal Server Error through Show Route', err: err }))
             }
@@ -149,17 +156,19 @@ router.delete('/:id', function (req, res) {
 // --------------------- Edit
 router.get('/:id/edit', function (req,res) {
     db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
-        if (err) {
-            console.log(err);
-        } else {
-            const context = {
-                oneTrip: oneTripFromDB
+        db.Trip.find({}, (err, allTripsFromDB) => {
+            if (err) {
+                console.log(err);
+            } else {
+                const context = {
+                    oneTrip: oneTripFromDB,
+                    allTrips: allTripsFromDB,
+                }
+                res.render('trip/edit', context)
             }
-            res.render('trip/edit', context)
-        }
+        })
     })
 })
-
 
 // --------------------- Update
 router.put('/:id', function (req, res) {

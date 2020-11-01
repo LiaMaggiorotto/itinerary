@@ -33,10 +33,41 @@ div.layout.layout-nav-side {
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active {
-    background-color: #2e211a;
+    background-color: #5c677d;
     border-color: #dfe1e1;
     color: #dfe1e1;
 }
+
+/* Login Modal */
+
+.modal-content {
+    color: #5c677d;
+    border: 1px solid #5c677d;
+}
+
+.modal-header {
+    background-color: #dfe1e1;
+}
+
+.btn.btn-secondary {
+    color: #5c677d;
+    background-color: #c7cacf;
+    border-color: #5c677d;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #171a27;
+    border-color: #c7cacf;
+    color: #c7cacf;
+}
+
+#modal-img {
+    width: 150px;
+    float: right;
+    margin-top: -16px;
+    margin-left: 38px;
+}
+
 
 /* Second Nav Bar */
 
@@ -48,6 +79,8 @@ div.layout.layout-nav-side {
 
 img#nav-two-logo {
     margin-bottom: 3vh;
+    width: 200px;
+    height: 70px;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -94,7 +127,7 @@ img.header-overlay {
 }
 
 .btn-primary:not(:disabled):not(.disabled):active{
-    background-color: #2e211a;
+    background-color: #171a27;
     border-color: #dfe1e1;
     color: #dfe1e1;
 }
@@ -104,7 +137,7 @@ img.header-overlay {
 }
 
 .btn-primary:focus {
-    background-color: #2e211a;
+    background-color: #5c677d;
     border-color: #dfe1e1;
     color: #dfe1e1;
     box-shadow: none;
@@ -169,7 +202,7 @@ div#show-page-header.container {
 }
 
 .show-overlay {
-    padding-top: 7%;
+    padding-top: 7.5%;
 }
 
 /* Nav Tabs */
