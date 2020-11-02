@@ -34,7 +34,7 @@ router.post('/register', async function(req, res) {
             username: createdUser.username,
             id: createdUser._id,
         }
-        res.redirect(`/${createdUser._id}/account`);
+        res.redirect(`/${createdUser._id}`);
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal Server Error", err: error });
@@ -58,7 +58,7 @@ router.post("/login", async function(req, res) {
             username: foundUser.username,
             id: foundUser._id,
         }
-        res.redirect(`/${foundUser._id}/account`)
+        res.redirect(`/${foundUser._id}`)
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }
@@ -79,6 +79,6 @@ module.exports.isCorrectUser = (req, res, next) => {
     if(req && req.session && req.session.currentUser && req.session.currentUser.id === req.params.id){
         next();
     } else {
-        res.status(403).json({error: 'Not today, bae'});
+        res.status(403).json({error: 'Imposter!'});
     }
 }

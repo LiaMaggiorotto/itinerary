@@ -42,13 +42,13 @@ app.use(session({
       }
     }));
 
-const authRequired = (req, res, next) => {
-    if(!req.session.currentUser) {
-        console.log('no current user found')
-        return res.redirect('/login');
-    }
-    next();
-}
+// const authRequired = (req, res, next) => {
+//     if(!req.session.currentUser) {
+//         console.log('no current user found')
+//         return res.redirect('/login');
+//     }
+//     next();
+// }
 
 
 // --------------------- Routes
@@ -59,7 +59,6 @@ const authRequired = (req, res, next) => {
 
 // home
 app.get('/', function (req, res)  {
-    req.sessions.test = 'Hey bae. This is a middleware test yeah?',
     res.render('index', { user: req.session.currentUser });
 });
 
@@ -70,11 +69,11 @@ app.use('/', controllers.auth);
 
 
 // User Routes
-// app.use("/user", authRequired, controllers.trips);
+app.use('/user', controllers.trips);
 
 
 // Trip Routes
-app.use('/trips', authRequired, controllers.trips);
+app.use('/trips', controllers.trips);
 
 
 // --------------------- Server Listener

@@ -9,7 +9,7 @@ const itinerarySchema = new mongoose.Schema({
     confirmation: { type: String },
     imgLink: { type: String },
     description: { type: String },
-    // user: { type: mongoose.Schema.Types.ObjectId, ref: "User",  required: true},
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User",  required: true},
 })
 
 const Itinerary = mongoose.model("Itinerary", itinerarySchema);
