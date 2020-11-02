@@ -7,7 +7,7 @@ const MongoStore = require('connect-mongo')(session);
 
 
 // --------------------- Internal Modules
-const db = require('./models/index');
+const db = require('./models');
 const controllers = require('./controllers');
 
 
@@ -18,35 +18,37 @@ const app = express();
 
 // --------------------- Configuration
 const PORT = 3000;
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 
 // --------------------- Middleware
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
+app.use(methodOverride('_method'));
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.originalUrl}`);
     next();
 });
 
-// app.use(session({
-//     resave: false,
-//     saveUninitialized: false, 
-//     secret: "Ugh, as if!", 
-//     store: new MongoStore({
-//       url: 'mongodb://localhost:27017/itinerary',
-//       }),
-//       cookie: {
-//         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 
-//       }
-//     }));
+app.use(session({
+    resave: false,
+    saveUninitialized: false, 
+    secret: "As if!", 
+    store: new MongoStore({
+      url: 'mongodb://localhost:27017/itinerary',
+      }),
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 
+      }
+    }));
 
-// app.use(function(req, res, next) {
-//     res.locals.user = req.session.currentUser;
-//     next();
-//     });
-
+const authRequired = (req, res, next) => {
+    if(!req.session.currentUser) {
+        console.log('no current user found')
+        return res.redirect('/login');
+    }
+    next();
+}
 
 
 // --------------------- Routes
@@ -57,19 +59,22 @@ app.use((req, res, next) => {
 
 // home
 app.get('/', function (req, res)  {
-    res.render('index');
+    req.sessions.test = 'Hey bae. This is a middleware test yeah?',
+    res.render('index', { user: req.session.currentUser });
 });
 
 
 
 //  Auth Routes
-// app.use('/', controllers.auth);
+app.use('/', controllers.auth);
 
+
+// User Routes
+// app.use("/user", authRequired, controllers.trips);
 
 
 // Trip Routes
-// app.use("/user", authRequired, controllers.trips);
-app.use('/trips', controllers.trips);
+app.use('/trips', authRequired, controllers.trips);
 
 
 // --------------------- Server Listener
