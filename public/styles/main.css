@@ -189,7 +189,7 @@ div#show-page-header.container {
 }
 
 .show-overlay {
-    padding-top: 7.5%;
+    padding-top: 10%;
 }
 
 /* Nav Tabs */
@@ -265,6 +265,12 @@ a.nav-link.show:hover {
     div#show-page-header.container {
         width: 100%;
         margin: 1rem;
+    }
+
+    /* Login Modal */
+
+    #modal-img {
+        display: none;
     }
 
 }
