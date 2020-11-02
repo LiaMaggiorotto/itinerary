@@ -12,7 +12,8 @@
 <main role ="main">
   <body class="home">
 
-    <%- include('../partials/nav2') %>
+    <%- include('../partials/navbars/nav2') %>
+
 
     <form action="/trips/<%= oneTrip._id %>?_method=PUT" method="POST">
         <h1 style="padding-top: 5rem;"><input type="text" name="title" value="<%= oneTrip.title %>"></h1>
