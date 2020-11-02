@@ -33,6 +33,7 @@ router.post('/register', async function(req, res) {
             username: createdUser.username,
             id: createdUser._id,
         }
+        console.log("User Registered", createdUser)
         res.redirect(`/user/${createdUser._id}`);
     } catch (error) {
         console.log(error);
@@ -43,7 +44,7 @@ router.post('/register', async function(req, res) {
 
 // login post
 router.post("/login", async function(req, res) {
-    console.log("form data:", req.body);
+    // console.log("form data:" req.body);
     try {
         const foundUser = await db.User.findOne({ username: req.body.username });
         if(!foundUser) {
@@ -57,9 +58,8 @@ router.post("/login", async function(req, res) {
             username: foundUser.username,
             id: foundUser._id,
         }
-        // res.redirect(`user/${foundUser._id}`)
-        console.log(foundUser)
-        res.redirect('/')
+        console.log("User Logged In", foundUser)
+        res.redirect(`user/${foundUser._id}`)
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }

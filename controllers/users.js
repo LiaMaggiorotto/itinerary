@@ -14,20 +14,20 @@ const {isCorrectUser} = require('./auth');
 
 
 // show, individual user account view
-router.get('/:id', async function (req, res) {
+router.get('/:id', isCorrectUser, async function (req, res) {
     try {
         const user = await db.User.findById(req.params.id)
         .populate('trips')
         .exec();
         console.log(user);
-            res.render('users/account', { user: user });
+            res.render('users/account', { user: user, foundUser: user });
     } catch (err) {
         return res.json(err);
     }
 });
 
 // edit <- view, edit individual user profile page
-router.get('/:id/edit', async function (req, res) {
+router.get('/:id/edit', isCorrectUser, async function (req, res) {
     try {
         const user = await db.User.findById(req.params.id);
         res.render("users/edit", { user: user });
@@ -51,15 +51,15 @@ router.put('/:id', function (req, res) {
 });
 
   // delete <- delete profile route
-router.delete("/:id", function (req, res) {
-    db.User.findByIdAndDelete(req.params.id, function (err, deletedUser) {
-        console.log(deletedUser);
-        if (err) {
-            console.log(err);
-            return res.send(err);
-        }
+  router.delete("/:id", async function (req, res) {
+    try {
+        await db.User.findByIdAndDelete(req.params.id, function (err, deletedUser) {
     });
-    req.session.destroy(() => res.redirect('/'));
+    req.session.destroy(()=> res.redirect('/'));
+        
+    } catch (err) {
+        return res.json(err);
+    }
 });
 
 module.exports = router;
