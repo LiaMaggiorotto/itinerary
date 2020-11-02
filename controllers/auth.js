@@ -25,16 +25,15 @@ router.post('/register', async function(req, res) {
         if(foundUser) {
             return res.send({ message: "An account with this email is already registered" });
         }
-        const newUser = req.body;
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(req.body.password, salt);
         newUser.password = hash;
-        const createdUser = await db.User.create(newUser);
+        const createdUser = await db.User.create(req.body);
         req.session.currentUser = {
             username: createdUser.username,
             id: createdUser._id,
         }
-        res.redirect(`/${createdUser._id}`);
+        res.redirect(`/user/${createdUser._id}`);
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal Server Error", err: error });
@@ -58,7 +57,9 @@ router.post("/login", async function(req, res) {
             username: foundUser.username,
             id: foundUser._id,
         }
-        res.redirect(`/${foundUser._id}`)
+        // res.redirect(`user/${foundUser._id}`)
+        console.log(foundUser)
+        res.redirect('/')
     } catch (error) {
         res.send({ message: "Internal Server Error", err: error });
     }

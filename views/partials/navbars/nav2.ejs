@@ -66,7 +66,12 @@
         <div class="d-none d-lg-block">
             <div class="dropup">
                 <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img alt="Profile Picture" src="https://i.imgur.com/xdjvSOX.jpg?1" class="avatar">
+                    <img alt="Profile Picture"
+                    <% if (!user.imageLink) { %>
+                        <img alt="Profile Picture" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar">
+                    <% } else { %>
+                        <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
+                    <%  }  %> 
                 </a>
                 <div class="dropdown-menu">
                     <a href="#" class="dropdown-item">Account</a>

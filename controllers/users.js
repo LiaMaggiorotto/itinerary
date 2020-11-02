@@ -7,14 +7,14 @@ const {isCorrectUser} = require('./auth');
 
 // base route is /user
 
-// view register/login modals
-router.get('/', function (req, res) {
-    res.render('index');
-});
+// // view register/login modals
+// router.get('/', function (req, res) {
+//     res.render('index');
+// });
 
 
 // show, individual user account view
-router.get('/:id', isCorrectUser, async function (req, res) {
+router.get('/:id', async function (req, res) {
     try {
         const user = await db.User.findById(req.params.id)
         .populate('trips')
@@ -27,7 +27,7 @@ router.get('/:id', isCorrectUser, async function (req, res) {
 });
 
 // edit <- view, edit individual user profile page
-router.get('/:id/edit', isCorrectUser, async function (req, res) {
+router.get('/:id/edit', async function (req, res) {
     try {
         const user = await db.User.findById(req.params.id);
         res.render("users/edit", { user: user });
@@ -46,7 +46,7 @@ router.put('/:id', function (req, res) {
         console.log(err);
         return res.send(err);
     }
-    res.redirect(`/${updatedUser._id}`);
+    res.redirect(`/user/${updatedUser._id}`);
     });
 });
 
@@ -59,7 +59,7 @@ router.delete("/:id", function (req, res) {
             return res.send(err);
         }
     });
-    req.session.destroy(()=> res.redirect('/'));
+    req.session.destroy(() => res.redirect('/'));
 });
 
 module.exports = router;
