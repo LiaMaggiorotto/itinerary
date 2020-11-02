@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
 
 // home
 app.get('/', function (req, res)  {
-    res.render('index', { user: req.session.currentUser });
+    res.render('index');
 });
 
 
@@ -73,7 +73,7 @@ app.use('/', controllers.auth);
 
 
 // User Routes
-app.use('/user', controllers.trips);
+app.use('/user', controllers.users);
 
 
 // Trip Routes

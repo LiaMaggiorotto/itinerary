@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     imageLink: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    trip: [{
+    trips: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Trip",
     }]
 }, {

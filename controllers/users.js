@@ -15,12 +15,17 @@ const {isCorrectUser} = require('./auth');
 
 // show, individual user account view
 router.get('/:id', isCorrectUser, async function (req, res) {
+    console.log('Show User')
     try {
         const user = await db.User.findById(req.params.id)
         .populate('trips')
         .exec();
         console.log(user);
-            res.render('users/account', { user: user, foundUser: user });
+        context = {
+            user: user, 
+            allTrips: user.trips,
+        }
+            res.render('users/account', context);
     } catch (err) {
         return res.json(err);
     }
