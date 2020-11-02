@@ -65,8 +65,60 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link show" href="/trips/<%= oneTrip._id %>/edit">Edit</a>
+                    <a class="nav-link show" data-toggle="modal" data-target="#tripEditModal">Edit</a>
                   </li>
+
+                  <!-- edit trip detail modal -->
+
+                  <div class="modal fade" id="tripEditModal" tabindex="-1" role="dialog" aria-labelledby="tripEditModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tripEditModalLabel">Edit <%= oneTrip.title %> Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- <img src="https://i.imgur.com/qlgYirq.png" id="trip-edit-modal-img"> -->
+                
+                                <form action="/trips/<%= oneTrip._id %>?_method=PUT" method="POST">
+                                  <h1>
+                                    <label for="title">Trip Title:</label>
+                                    <input type="text" name="title" value="<%= oneTrip.title %>">
+                                  </h1>
+                                  <h3>
+                                    <label for="destination">Destination:</label>
+                                    <input type="text" name="destination" value="<%= oneTrip.destination %>">
+                                  </h3>
+                                  <h6>
+                                    <label for="startDate">Start Date:</label>
+                                    <input type="text" name="startDate" value="<%= oneTrip.startDate %>">
+                                    <label for="endDate">End Date:</label>
+                                    <input type="text" name="endDate" value="<%= oneTrip.endDate %>"> 
+                                  </h6> 
+                                  
+                                  <section>
+                                    <label for="details">Details:</label>
+                                    <textarea class="form-control" name="details" rows="3"><%= oneTrip.details %></textarea>
+                                  </section>
+                                  <hr>
+                                  <input type="submit" class="btn btn-secondary" value="Update" /> <input type="reset" class="btn btn-secondary">
+                                  <form action="/trips/<%= oneTrip._id %>?_method=DELETE" method="POST">
+                                    <input type="submit" value="Delete" class="btn btn-primary"/>
+                                  </form>
+                                </form> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#tripEditModal').on('show.bs.modal', function (event) {
+                        var button = $(event.relatedTarget)
+                    })
+                </script>
+                
+                <!-- end modal -->
 
                 </ul>
 

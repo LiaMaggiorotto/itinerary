@@ -154,7 +154,7 @@ router.delete('/:id', function (req, res) {
 
 
 // --------------------- Edit
-router.get('/:id/edit', function (req,res) {
+router.get('/:id', function (req,res) {
     db.Trip.findById(req.params.id, (err, oneTripFromDB) => {
         db.Trip.find({}, (err, allTripsFromDB) => {
             if (err) {
@@ -164,7 +164,7 @@ router.get('/:id/edit', function (req,res) {
                     oneTrip: oneTripFromDB,
                     allTrips: allTripsFromDB,
                 }
-                res.render('trip/edit', context)
+                res.render('trip/show', context)
             }
         })
     })
