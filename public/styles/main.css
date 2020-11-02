@@ -281,6 +281,10 @@ a.nav-link.show:hover {
         margin-bottom: 0;
     }
 
+    div.d-flex.align-items-center {
+        flex-direction: row;
+    }
+
     /* Show Page */
     
     #show-page-header {
