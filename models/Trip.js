@@ -16,7 +16,7 @@ const tripSchema = new mongoose.Schema({
     notes: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Note",
     }],
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User",  required: true}, 
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User"}, 
 })
 
 const Trip = mongoose.model("Trip", tripSchema);
