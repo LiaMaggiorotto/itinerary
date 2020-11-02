@@ -93,6 +93,25 @@ img#nav-two-logo {
 }
 
 
+
+.avatar {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    border: 1px solid #c7cacf;
+    background: #c7cacf;
+    color: #c7cacf;
+}
+
+.dropdown-menu {
+    color: #171a27;
+    background: #dfe1e1;
+}
+
+div.d-flex.align-items-center {
+    flex-direction: column;
+}
+
 /* Home Page:
  Header Image */
 
