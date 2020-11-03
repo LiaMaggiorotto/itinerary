@@ -4,20 +4,23 @@ const router = express.Router();
 const db = require("../models");
 
 // base route is /trips
+const eventCategories = ['Dining', 'Entertainment', 'Travel', 'Fitness', 'Check In', 'Check Out', 'Leisure', 'Tour'];
 
 // --------------------- Index View 
-// router.get('/:id', function (req, res) {
-//     db.Trip.findById((req.params.id), function (err, allEventsFromDB) {
-//         if(err) {
-//             console.log(err);
-//         } else {
-//             const context = {
-//                 allEvents: allEventsFromDB
-//             }
-//             res.render('trip/show', context)
-//         }
-//     })
-// });
+router.get('/:id', function (req, res) {
+    db.Trip.findById((req.params.id), function (err, allEventsFromDB) {
+        if(err) {
+            console.log(err);
+        } else {
+            const context = {
+                allEvents: allEventsFromDB,
+                categories: eventCategories,
+            }
+            res.render('trip/show', context)
+        }
+    })
+});
+
 
 // --------------------- New 
 router.get('/:id/newevent', function (req, res) {
@@ -25,7 +28,11 @@ router.get('/:id/newevent', function (req, res) {
         if(err) {
             console.log(err);
         } else {
-            res.render('trip/show', {oneTrip: oneTripFromDB})
+            const context = {
+                oneTrip: oneTripFromDB, 
+                categories: eventCategories
+            }
+            res.render('trip/show', context)
         }
     })
 })
@@ -42,8 +49,9 @@ router.post('/:id', function (req, res) {
                 console.log(err);
             }
             foundTrip.itinerary.push(createdEvent);
-            fountTrip.save();
-            res.redirect('/trips/:id?option=itinerary')
+            foundTrip.save();
+            console.log(foundTrip)
+            res.redirect(`/trips/${foundTrip._id}?option=itinerary`)
         })
     })
 })

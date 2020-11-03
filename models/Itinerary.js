@@ -5,10 +5,10 @@ const itinerarySchema = new mongoose.Schema({
     date: { type: String, required: true },
     time: { type: String, required: true },
     location: String,
-    addresss: String,
+    address: String,
     confirmation: String,
-    imgLink: String,
     description: String,
+    category: String,
     trip: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Trip",
     }],
