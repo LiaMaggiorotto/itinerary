@@ -1,0 +1,72 @@
+
+<div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="createEventModalLabel">Create A New Event</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <form method="POST" action="/trips/<%= oneTrip._id %>" validate>
+
+            <h5>
+                <label for="title">Event Title:</label>
+                <input type="text" name="title">
+            </h5>
+            <h5>
+                <label for="date">Date:</label>
+                <input type="text" name="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/YY/DDDD">
+            </h5> 
+            <h5>
+                <label for="time">Time:</label>
+                <input type="text" name="time">
+            </h5> 
+            <p><small>Optional:</small></p>
+            <hr>
+            <h7>
+                <label for="location">Location:</label>
+                <input type="text" name="location">
+            </h7>
+            <h7>
+                <label for="address">Address:</label>
+                <input type="text" name="address">
+            </h7>
+            <h7>
+                <label for="confirmation">Confirmation Number:</label>
+                <input type="text" name="confirmation">
+            </h7>
+            <h7>
+                <label for="description">Notes:</label>
+                <textarea class="form-control" name="description" rows="3" maxlength="250" minlength="2" >
+            </h7>
+            <h7> Label: <span class="input"><select name="category">
+                <% categories.forEach((category) => { %>
+                    <% console.log(category) %>
+                        <option><%= category %></option>
+                <%})%>
+            </select></span>
+            </h7>
+
+
+                        
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-primary" value="Add">
+            </div>
+            </form>
+        </div>
+
+        </div>
+    </div>
+    </div>
+    <script>
+    $('#createEventModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var modal = $(this)
+        modal.find('.modal-title').text('Add New Event')
+    })
+    </script>
+</div>
