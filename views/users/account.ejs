@@ -42,8 +42,6 @@
 
                 <section class="py-4 py-g-5">
                   <h5>Name: <%= user.fullname %> </span></h5>
-                  <h5>Location: <%= user.location %> </span></h5>
-                  <h5>Passions:<%= user.passions %></span></h5>
                   <h5>Member Since:<%= user.createdAt %></span></h5>
                     <% if(user) { %>
                         <a class="link" data-toggle="modal" data-target="#profileEditModal" id="editProfileLink">Edit Profile</a>

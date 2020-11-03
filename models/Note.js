@@ -4,6 +4,9 @@ const noteSchema = new mongoose.Schema({
     title: { type: String, required: true },
     link: String,
     description: String,
+    trip: [{
+        type: mongoose.Schema.Types.ObjectId, ref: "Trip",
+    }],
     // user: { type: mongoose.Schema.Types.ObjectId, ref: "User",  required: true},
 },
 {

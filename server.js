@@ -59,14 +59,10 @@ app.use(function(req, res, next) {
 
 // View Routes
 
-
-
 // home
 app.get('/', function (req, res)  {
     res.render('index');
 });
-
-
 
 //  Auth Routes
 app.use('/', controllers.auth);
@@ -78,6 +74,10 @@ app.use('/user', controllers.users);
 
 // Trip Routes
 app.use('/trips', controllers.trips);
+
+// Trip Itinerary
+app.use('/trips', controllers.itineraries);
+
 
 
 // --------------------- Server Listener

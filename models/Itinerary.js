@@ -9,6 +9,9 @@ const itinerarySchema = new mongoose.Schema({
     confirmation: String,
     imgLink: String,
     description: String,
+    trip: [{
+        type: mongoose.Schema.Types.ObjectId, ref: "Trip",
+    }],
     // user: { type: mongoose.Schema.Types.ObjectId, ref: "User",  required: true},
 })
 

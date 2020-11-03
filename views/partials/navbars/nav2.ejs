@@ -73,7 +73,7 @@
                     <%  }  %> 
                 </a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Account</a>
+                    <a href="/user/<%= user.id %>" class="dropdown-item">Account</a>
                     <form action="/logout?_method=DELETE" method="POST">
                         <input class="dropdown-item" type="submit" value="Logout">
                     </form>

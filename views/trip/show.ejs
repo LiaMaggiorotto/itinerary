@@ -87,6 +87,46 @@
                   <% if(selectedCategory === 'itinerary') { %>
                     <h3>Itinerary</h3>
 
+                    <% if(user) { %>
+                    <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createEventModal" title="Add New Event">
+                      <i class="fal fa-plus"></i>
+                    </button>
+
+                    <!-- Add Event Modal -->
+
+                    <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="createEventModalLabel">Create A New Event</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="" validate>
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <input type="submit" class="btn btn-primary" value="Add!">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $('#createEventModal').on('show.bs.modal', function (event) {
+                            var button = $(event.relatedTarget)
+                            var modal = $(this)
+                            modal.find('.modal-title').text('Add New Event')
+                        })
+                    </script>
+                    <% } %>
+
+                    <!-- End Event Modal -->
+
+
                     <ul>
                     <% for(let i=0; i < oneTrip.itinerary.length; i++) { %>
                       <li>
