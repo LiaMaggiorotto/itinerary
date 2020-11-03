@@ -6,7 +6,7 @@ const tripSchema = new mongoose.Schema({
     imageLink: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
-    details: { type: String, },
+    details: String,
     flights: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Flight",
     }],
