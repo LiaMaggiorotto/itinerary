@@ -86,15 +86,15 @@
                     <h3 class="show-page-detail-header">Itinerary</h3>
                     <% if(user) { %>
                       <div class="sidenav">
-                      <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createEventModal" title="Add New Event">
-                      <i class="fal fa-plus"></i>
-                      </button>
-                  
-                    <%- include('../partials/modals/newItineraryEvent') %>
-                    <% } %>
+                        <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createEventModal" title="Add New Event">
+                        <i class="fal fa-plus"></i>
+                        </button>
+                    
+                        <%- include('../partials/modals/newItineraryEvent') %>
+                        <% } %>
                       </div>
                 
-                <div class="container posts-list">
+                      <div class="container posts-list">
 
                     <ul style="padding: inherit">
 
@@ -152,11 +152,10 @@
                             <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createNoteModal" title="Add New Note">
                             <i class="fal fa-plus"></i>
                             </button>
+                            
+                            <%- include('../partials/modals/newNote') %>
+                            <% } %>
                           </div>
-                    
-                          <%- include('../partials/modals/newNote') %>
-                        <% } %>
-                        
                         
                         <div class="container posts-list">
 
@@ -187,18 +186,16 @@
 
                                   </div>
                               </li>
-                              <% } %>
-                          </ul>
-                          
-
-
-
-                          <% if(oneTrip.notes.length === 0) { %>
-                            <h6>You haven't saved any notes yet!</h6>
-                            <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
                             <% } %>
-                          </div>
                             
+                            
+                            <% if(oneTrip.notes.length === 0) { %>
+                              <h6>You haven't saved any notes yet!</h6>
+                              <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
+                              <% } %>
+                            </ul>
+                          </div>
+                      </div>
 
 
 
