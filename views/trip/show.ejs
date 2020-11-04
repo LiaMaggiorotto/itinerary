@@ -80,6 +80,7 @@
               <section class="py-4 py-g-5">
 
                 <!-- Itinerary -->
+                
                 <% if(selectedCategory === 'itinerary') { %>
                   <div>
                     <h3 class="show-page-detail-header">Itinerary</h3>
@@ -94,24 +95,39 @@
                   </div>
                 
                 <div class="container posts-list">
+
                     <ul style="padding: inherit">
 
                       <% for(let i=0; i < oneTrip.itinerary.length; i++) { %>
-                        <li>
+                        <li class="lower-list-items">
                           <div class="card text-center">
-                            <h6><%= oneTrip.itinerary[i].title %> </h6>
-                            <small class="text-muted"><%= oneTrip.itinerary[i].date %></small>
-                            <small>Starting at <%= oneTrip.itinerary[i].time %></small>
-                            <small>Location: <%= oneTrip.itinerary[i].time %></small>
+                              <h6><%= oneTrip.itinerary[i].title %> </h6>
+                            
+                            <small class="text-muted"><%= oneTrip.itinerary[i].date %> at <%= oneTrip.itinerary[i].time %></small>
+                            
+                            <% if(oneTrip.itinerary[i].location.length > 0 && oneTrip.itinerary[i].address.length > 0) { %> 
+                            <small><a href="https://maps.google.com/?q=<%= oneTrip.itinerary[i].address %>"><%= oneTrip.itinerary[i].location %></a></small>
+                            <% } else if(oneTrip.itinerary[i].location.length > 0) { %>
+                              <small><%= oneTrip.itinerary[i].location %></small>
+                            <% } %>
+
+                            <% if(oneTrip.itinerary[i].confirmation.length > 0) { %> 
+                              <small>Confirmation Number: <%= oneTrip.itinerary[i].confirmation %></a></small>
+                              <% } %>
+
+                            <% if(oneTrip.itinerary[i].description.length > 0) { %> 
+                              <small><%= oneTrip.itinerary[i].description %></a></small>
+                              <% } %>
+
                           </div>
                         </li>
                       <% } %>
-                    </ul>
-
-                    <% if(oneTrip.itinerary.length === 0) { %>
-                      <h6>There are no events added for this trip. Let's get planning!</h6>
-                    <% } %>
-
+                      
+                      <% if(oneTrip.itinerary.length === 0) { %>
+                        <h6>There are no events added for this trip. Let's get planning!</h6>
+                        <% } %>
+                        
+                      </ul>
 
 
 
