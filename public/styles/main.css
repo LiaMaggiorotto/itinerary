@@ -242,9 +242,9 @@ div#show-page-header.container {
 }
 
 div.container.posts-list {
-    border: 2px solid #5c677d;
+    /* border: 1px solid #c7cacf; */
     border-radius: 10px;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 ul {
@@ -257,6 +257,18 @@ ul {
 
 .lower-list-items {
     margin: 1rem;
+}
+
+select {
+    border-color: #dfe1e1;
+    color: #5c677d;
+    background: #dfe1e1;
+    border-radius: 5px;
+}
+
+div.card.text-center {
+    background: none;
+    border: 1px solid #c7cacf;
 }
 
 
@@ -337,6 +349,14 @@ a.nav-link.show:hover {
     div#show-page-header.container {
         width: 100%;
         margin: 1rem;
+    }
+
+    div.container.posts-list {
+        padding: 1rem;
+    }
+
+    ul {
+        padding: 1rem;
     }
 
     /* Login Modal */
