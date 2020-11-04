@@ -87,8 +87,8 @@
                     <% if(user) { %>
                       <div class="sidenav">
                       <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createEventModal" title="Add New Event">
-                    <i class="fal fa-plus"></i>
-                    </button>
+                      <i class="fal fa-plus"></i>
+                      </button>
                   
                     <%- include('../partials/modals/newItineraryEvent') %>
                     <% } %>
@@ -99,13 +99,22 @@
                     <ul style="padding: inherit">
 
                       <% for(let i=0; i < oneTrip.itinerary.length; i++) { %>
+
                         <li class="lower-list-items">
                           <div class="card text-center">
-                              <h6><%= oneTrip.itinerary[i].title %> </h6>
+                            <h6><%= oneTrip.itinerary[i].title %> </h6>
+
+                            <div class="sidenav">
+                              <form action="/tripdetail/<%= oneTrip._id %>/itinerary/<%= oneTrip.itinerary[i]._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="far fa-trash-alt" id="trash">
+                                </button>
+                                </form>
+                            </div>
                             
                             <small class="text-muted"><%= oneTrip.itinerary[i].date %> at <%= oneTrip.itinerary[i].time %></small>
                             
                             <% if(oneTrip.itinerary[i].location.length > 0 && oneTrip.itinerary[i].address.length > 0) { %> 
+
                             <small><a href="https://maps.google.com/?q=<%= oneTrip.itinerary[i].address %>"><%= oneTrip.itinerary[i].location %></a></small>
                             <% } else if(oneTrip.itinerary[i].location.length > 0) { %>
                               <small><%= oneTrip.itinerary[i].location %></small>
@@ -149,19 +158,36 @@
                         <% } %>
                         
                         
-                        
-                        <ul>
-                          <% for(let i=0; i < oneTrip.notes.length; i++) { %>
-                            <li class="lower-list-items">
-                              <div class="card text-center">
-                                <% if(oneTrip.notes[i].link.length > 0) { %>
-                                  <h6><a href="<%= oneTrip.notes[i].link %>"><%= oneTrip.notes[i].title %> </a></h6>
-                                <% } %>
-                                  <h6><%= oneTrip.notes[i].title %></h6>
+                        <div class="container posts-list">
+
+                          <ul style="padding: inherit">
+
+                            <% for(let i=0; i < oneTrip.notes.length; i++) { %>
                               
-                                  <small><%= oneTrip.notes[i].description %></small>
-                            </li>
-                            <% } %>
+                              <li class="lower-list-items">
+                                <div class="card text-center">
+                                  <% if(oneTrip.notes[i].link.length > 0) { %>
+                                    <h6><a href="<%= oneTrip.notes[i].link %>"><%= oneTrip.notes[i].title %> </a></h6>
+                                  <% } else { %>
+                                    <h6><%= oneTrip.notes[i].title %></h6>
+                                    <% } %>
+                                    
+                                  <div class="sidenav">
+                                    <form action="/trips/<%= oneTrip.itinerary[i]._id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="far fa-trash-alt" id="trash">
+                                      </button>
+                                      </form>
+                                  </div>
+
+
+
+                                  <% if(oneTrip.notes[i].note.length > 0 ) { %>
+                                    <small><%= oneTrip.notes[i].note %></small>
+                                    <% } %>
+
+                                  </div>
+                              </li>
+                              <% } %>
                           </ul>
                           
 

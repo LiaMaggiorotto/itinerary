@@ -104,12 +104,12 @@ router.get('/:id', async function (req,res) {
 // --------------------- Delete
 router.delete('/:id', function (req, res) {
     db.Trip.findByIdAndDelete(req.params.id, (err, oneTripFromDB) => {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log(oneTripFromDB);
-            res.redirect('/trips');
-        }
+    if(err) {
+        console.log(err);
+    } else {
+        console.log(oneTripFromDB);
+        res.redirect('/trips');
+    }
     })
 })
 

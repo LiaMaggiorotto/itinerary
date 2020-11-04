@@ -3,13 +3,12 @@ const router = express.Router();
 
 const db = require("../models");
 
-// base route is /trips
+// base route is /tripdetail
 
 // --------------------- Create 
 router.post('/:id', function (req, res) {
     console.log(req.body);
     const selectedCategory = req.query.option;
-
     if(selectedCategory === 'itinerary') {
         db.Itinerary.create(req.body, function (err, createdEvent) {
             if(err) {
@@ -40,7 +39,7 @@ router.post('/:id', function (req, res) {
                 res.redirect(`/trips/${foundTrip._id}?option=notes`)
             })
         })
-    } else if(selectedCategory === 'flights') {
+    } else if(selectedCategory === 'arrivals' || selectedCategory === 'departures') {
         db.Flight.create(req.body, function (err, createdFlight) {
             if(err) {
                 console.log(err);
@@ -69,6 +68,21 @@ router.post('/:id', function (req, res) {
 
 
 // --------------------- Delete
+router.delete('/:tripid/itinerary/:itineraryid', function (req, res) {
+    const tripid = req.params.tripid;
+    const itineraryid = req.params.itineraryid;
+        db.Itinerary.findByIdAndDelete(itineraryid, function (err, oneEventfromDB) {
+            if(err) return console.log(err);
+            db.Trip.findById(tripid, function (err, oneEventFromTrip) {
+                if(err) return console.log(err);
+                oneEventFromTrip.itinerary.remove(oneEventfromDB);
+                oneEventFromTrip.save();
+                res.redirect(`/trips/${tripid}?option=itinerary`)
+            })
+        })
+})
+
+
 
 
 

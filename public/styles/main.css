@@ -269,8 +269,14 @@ select {
 div.card.text-center {
     background: none;
     border: 1px solid #c7cacf;
+    padding: .5rem;
 }
 
+#trash {
+    border: none;
+    background: none;
+    color: #33415c;
+}
 
 /* Nav Tabs */
 

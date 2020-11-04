@@ -76,8 +76,7 @@ app.use('/user', controllers.users);
 app.use('/trips', controllers.trips);
 
 // Trip Details
-
-app.use('/trips', controllers.tripDetails);
+app.use('/tripdetail', controllers.tripDetails);
 
 
 // --------------------- Server Listener
