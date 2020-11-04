@@ -43,8 +43,7 @@
                 <input type="textarea" name="description">
             </h7>
             <h7> Category: <span class="input"><select name="category">
-                <% categories.forEach((category) => { %>
-                    <% console.log(category) %>
+                <% eventCategories.forEach((category) => { %>
                         <option><%= category %></option>
                 <%})%>
             </select></span>

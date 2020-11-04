@@ -75,11 +75,14 @@ app.use('/user', controllers.users);
 // Trip Routes
 app.use('/trips', controllers.trips);
 
-// Trip Itinerary
+// Itinerary
 app.use('/trips', controllers.itineraries);
 
-// Trip Notes
+// Notes
 app.use('/trips', controllers.notes);
+
+// Flights
+app.use('/trips', controllers.flights);
 
 
 

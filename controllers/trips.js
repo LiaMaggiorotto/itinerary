@@ -7,6 +7,8 @@ const db = require('../models');
 
 const eventCategories = ['Dining', 'Entertainment', 'Travel', 'Fitness', 'Check In', 'Check Out', 'Leisure', 'Tour'];
 
+const flightCategory = ['Arrival, Departure'];
+
 // --------------------- Index View 
 router.get('/', (req,res) => {
     db.Trip.find({user: req.session.currentUser.id}, (err, allTripsFromDB) => {
@@ -15,7 +17,8 @@ router.get('/', (req,res) => {
         } else {
             res.render('trip/tripsIndex', {
                 allTrips: allTripsFromDB,
-                categories: eventCategories,
+                eventCategories: eventCategories,
+                flightCategory: flightCategory,
             });
         }
     });
@@ -66,7 +69,8 @@ router.get('/:id', async function (req,res) {
                         oneTrip: oneTripFromDB,
                         selectedCategory: selectedCategory,
                         allTrips: allTripsFromDB,
-                        categories: eventCategories,
+                        eventCategories: eventCategories,
+                        flightCategory: flightCategory,
                     }
                     res.render('trip/show', context)
                 }
@@ -81,7 +85,8 @@ router.get('/:id', async function (req,res) {
                         selectedCategory: selectedCategory,
                         oneTrip: oneTripFromDB,
                         allTrips: allTripsFromDB,
-                        categories: eventCategories,
+                        eventCategories: eventCategories,
+                        flightCategory: flightCategory,
                     }
                     res.render('trip/show', context)
                 }}
