@@ -40,9 +40,9 @@
             </h7>
             <h7>
                 <label for="description">Notes:</label>
-                <textarea class="form-control" name="description" rows="3" maxlength="250" minlength="2" >
+                <input type="textarea" name="description">
             </h7>
-            <h7> Label: <span class="input"><select name="category">
+            <h7> Category: <span class="input"><select name="category">
                 <% categories.forEach((category) => { %>
                     <% console.log(category) %>
                         <option><%= category %></option>
