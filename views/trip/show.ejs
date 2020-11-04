@@ -80,7 +80,7 @@
               <section class="py-4 py-g-5">
 
                 <!-- Itinerary -->
-                
+
                 <% if(selectedCategory === 'itinerary') { %>
                   <div>
                     <h3 class="show-page-detail-header">Itinerary</h3>
@@ -92,7 +92,7 @@
                   
                     <%- include('../partials/modals/newItineraryEvent') %>
                     <% } %>
-                  </div>
+                      </div>
                 
                 <div class="container posts-list">
 
@@ -128,47 +128,74 @@
                         <% } %>
                         
                       </ul>
-
+                      </div>
+                  </div>
 
 
 
                   <!-- Notes -->
 
                   <% } else if(selectedCategory === 'notes') { %>
-                      <h3>Notes</h3>
-                      
-                      <ul>
-                        <% for(let i=0; i < oneTrip.notes.length; i++) { %>
-                          <li>
-                            <h6><a href="<%= oneTrip.notes[i].link %>"><%= oneTrip.notes[i].title %> </a></h6>
-                            <small><%= oneTrip.notes[i].description %></small>
-                          </li>
-                          <% } %>
-                      </ul>
-
-                      <% if(oneTrip.notes.length === 0) { %>
-                        <h6>You haven't saved any notes yet!</h6>
-                        <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
-                      <% } %>
-
-                      
-                  <!-- Arrivals -->
-                  
-                  <% } else if(selectedCategory === 'arrivals') { %>
-                    <% let hasArrivals = false %>
-                      <h3>Arrivals</h3>
-                      <ul>
-                        <% for(let i=0; i < oneTrip.flights.length; i++) { %>
-                          <% if (oneTrip.flights[i].category === 'arrival') { %>
-                            <% hasArrivals = true %>
-                            <li>
-                              <h6><%= oneTrip.flights[i].guest %></h6>
-                              <small>Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
-                              <small>Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
-                            </li>
-                          <% } %>
+                      <div>
+                        <h3 class="show-page-detail-header">Notes</h3>
+                        <% if(user) { %>
+                          <div class="sidenav">
+                            <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createNoteModal" title="Add New Note">
+                            <i class="fal fa-plus"></i>
+                            </button>
+                          </div>
+                    
+                          <%- include('../partials/modals/newNote') %>
                         <% } %>
-                      </ul>
+                        
+                        
+                        
+                        <ul>
+                          <% for(let i=0; i < oneTrip.notes.length; i++) { %>
+                            <li class="lower-list-items">
+                              <div class="card text-center">
+                                <% if(oneTrip.notes[i].link.length > 0) { %>
+                                  <h6><a href="<%= oneTrip.notes[i].link %>"><%= oneTrip.notes[i].title %> </a></h6>
+                                <% } %>
+                                  <h6><%= oneTrip.notes[i].title %></h6>
+                              
+                                  <small><%= oneTrip.notes[i].description %></small>
+                            </li>
+                            <% } %>
+                          </ul>
+                          
+
+
+
+                          <% if(oneTrip.notes.length === 0) { %>
+                            <h6>You haven't saved any notes yet!</h6>
+                            <small>Feel free to add any and everything here that you may want to reference at a later date.</small>
+                            <% } %>
+                          </div>
+                            
+
+
+
+
+
+                      
+                            <!-- Arrivals -->
+                            
+                            <% } else if(selectedCategory === 'arrivals') { %>
+                              <% let hasArrivals = false %>
+                              <h3>Arrivals</h3>
+                              <ul>
+                                <% for(let i=0; i < oneTrip.flights.length; i++) { %>
+                                  <% if (oneTrip.flights[i].category === 'arrival') { %>
+                                    <% hasArrivals = true %>
+                                    <li>
+                                      <h6><%= oneTrip.flights[i].guest %></h6>
+                                      <small>Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
+                                      <small>Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
+                                    </li>
+                                    <% } %>
+                                    <% } %>
+                                  </ul>
 
                       <% if(!hasArrivals) { %>
                         <h6>You haven't saved any arriving flights yet!</h6>

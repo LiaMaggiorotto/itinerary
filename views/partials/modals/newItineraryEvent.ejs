@@ -10,7 +10,7 @@
         </div>
 
         <div class="modal-body">
-            <form method="POST" action="/trips/<%= oneTrip._id %>" validate>
+            <form method="POST" action="/trips/<%= oneTrip._id %>?option=itinerary">
 
             <h5>
                 <label for="title">Event Title:</label>
@@ -24,8 +24,8 @@
                 <label for="time">Time:</label>
                 <input type="text" name="time">
             </h5> 
-            <p><small>Optional:</small></p>
             <hr>
+            <p><small>Optional:</small></p>
             <h7>
                 <label for="location">Location:</label>
                 <input type="text" name="location">

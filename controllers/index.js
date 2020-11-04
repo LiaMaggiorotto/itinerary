@@ -2,9 +2,7 @@
 
 module.exports = {
     auth: require('./auth'),
-    flights: require('./flights'),
-    itineraries: require('./itineraries'),
-    notes: require('./notes'),
+    tripDetails: require('./tripDetails'),
     trips: require('./trips'),
     users: require('./users'),
 };

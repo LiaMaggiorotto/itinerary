@@ -75,15 +75,9 @@ app.use('/user', controllers.users);
 // Trip Routes
 app.use('/trips', controllers.trips);
 
-// Itinerary
-app.use('/trips', controllers.itineraries);
+// Trip Details
 
-// Notes
-app.use('/trips', controllers.notes);
-
-// Flights
-app.use('/trips', controllers.flights);
-
+app.use('/trips', controllers.tripDetails);
 
 
 // --------------------- Server Listener
