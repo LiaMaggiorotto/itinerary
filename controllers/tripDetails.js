@@ -20,7 +20,6 @@ router.post('/:id', function (req, res) {
                 }
                 foundTrip.itinerary.push(createdEvent);
                 foundTrip.save();
-                console.log(foundTrip)
                 res.redirect(`/trips/${foundTrip._id}?option=itinerary`)
             })
         })
@@ -35,7 +34,6 @@ router.post('/:id', function (req, res) {
                 }
                 foundTrip.notes.push(createdNote);
                 foundTrip.save();
-                console.log(foundTrip)
                 res.redirect(`/trips/${foundTrip._id}?option=notes`)
             })
         })
@@ -50,11 +48,12 @@ router.post('/:id', function (req, res) {
                 }
                 foundTrip.notes.push(createdFlight);
                 foundTrip.save();
-                console.log(foundTrip)
+                console.log('Trip:', foundTrip)
+                console.log('Flight:', createdFlight)
                 if(createdFlight.category === "Arrival") {
                     res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
                 }
-                res.redirect(`/trip/${foundTrip._id}?option=departures`)
+                res.redirect(`/trips/${foundTrip._id}?option=departures`)
             })
         })
     }
@@ -68,20 +67,36 @@ router.post('/:id', function (req, res) {
 
 
 // --------------------- Delete
+
+// itinerary
 router.delete('/:tripid/itinerary/:itineraryid', function (req, res) {
     const tripid = req.params.tripid;
     const itineraryid = req.params.itineraryid;
-        db.Itinerary.findByIdAndDelete(itineraryid, function (err, oneEventfromDB) {
+    db.Itinerary.findByIdAndDelete(itineraryid, function (err, oneEventfromDB) {
+        if(err) return console.log(err);
+        db.Trip.findById(tripid, function (err, oneTrip) {
             if(err) return console.log(err);
-            db.Trip.findById(tripid, function (err, oneEventFromTrip) {
-                if(err) return console.log(err);
-                oneEventFromTrip.itinerary.remove(oneEventfromDB);
-                oneEventFromTrip.save();
-                res.redirect(`/trips/${tripid}?option=itinerary`)
-            })
+            oneTrip.itinerary.remove(oneEventfromDB);
+            oneTrip.save();
+            res.redirect(`/trips/${tripid}?option=itinerary`)
         })
+    })
 })
 
+// note
+router.delete('/:tripid/note/:noteid', function (req, res) {
+    const tripid = req.params.tripid;
+    const noteid = req.params.noteid;
+    db.Note.findByIdAndDelete(noteid, function (err, oneNoteFromDB) {
+        if(err) return console.log(err);
+        db.Trip.findById(tripid, function (err, oneTrip) {
+            if(err) return console.log(err);
+            oneTrip.itinerary.remove(oneNoteFromDB);
+            oneTrip.save();
+            res.redirect(`/trips/${tripid}?option=notes`)
+        })
+    })
+})
 
 
 

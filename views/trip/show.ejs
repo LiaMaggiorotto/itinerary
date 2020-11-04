@@ -173,7 +173,7 @@
                                     <% } %>
                                     
                                   <div class="sidenav">
-                                    <form action="/trips/<%= oneTrip.itinerary[i]._id %>?_method=DELETE" method="POST">
+                                    <form action="/tripdetail/<%= oneTrip._id %>/note/<%= oneTrip.notes[i]._id %>?_method=DELETE" method="POST">
                                       <button type="submit" class="far fa-trash-alt" id="trash">
                                       </button>
                                       </form>
