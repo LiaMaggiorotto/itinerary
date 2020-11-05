@@ -50,7 +50,7 @@ router.post('/:id', function (req, res) {
                 res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
             })
         })
-    } else if(selectedCategory === 'departure') {   
+    } else if(selectedCategory === 'departures') {   
         db.Flight.create(req.body, function (err, createdFlight) {
             if(err) {
                 console.log(err);
@@ -62,18 +62,11 @@ router.post('/:id', function (req, res) {
                 foundTrip.flights.push(createdFlight);
                 foundTrip.save();
                 console.log('Flight:', createdFlight)
-                res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
+                res.redirect(`/trips/${foundTrip._id}?option=departures`)
             })
         })
     }
 });
-
-
-
-// --------------------- Edit
-
-
-// --------------------- Update
 
 
 // --------------------- Delete
@@ -108,7 +101,7 @@ router.delete('/:tripid/note/:noteid', function (req, res) {
     })
 })
 
-// flight
+// arrival flight
 router.delete('/:tripid/arrivingflight/:flightid', function(req, res) {
     const tripid = req. params.tripid;
     const flightid = req.params.flightid;
@@ -123,6 +116,21 @@ router.delete('/:tripid/arrivingflight/:flightid', function(req, res) {
     })
 })
 
+
+// departing flight
+router.delete('/:tripid/departingflight/:flightid', function(req, res) {
+    const tripid = req. params.tripid;
+    const flightid = req.params.flightid;
+    db.Flight.findByIdAndDelete(flightid, function (err, oneFlightFromDB) {
+        if(err) return console.log(err);
+        db.Trip.findById(tripid, function (err, oneTrip) {
+            if(err) return console.log(err);
+            oneTrip.flights.remove(oneFlightFromDB);
+            oneTrip.save();
+            res.redirect(`/trips/${tripid}?option=departures`)
+        })
+    })
+})
 
 
 module.exports = router;

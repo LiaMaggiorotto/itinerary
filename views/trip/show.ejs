@@ -257,28 +257,50 @@
 
                   <% } else if (selectedCategory === 'departures') { %>
                     <% let hasDepartures = false %>
-                    <h3>Departures</h3>
-                    <ul>
-                      <% for(let i=0; i < oneTrip.flights.length; i++) { %>
-                        <% if (oneTrip.flights[i].category === 'Departure') { %>
-                          <% hasDepartures = true %>
-                          <li class="lower-list-items">
-                            <div class="card text-center">
-                              <h6><%= oneTrip.flights[i].guest %></h6>
-                              <small class="text-muted">Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
-                              <small class="text-muted">Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
-                            </div>
-                          </li>
+                    <div>
+                    <h3 class="show-page-detail-header">Departures</h3>
+                    <% if(user) { %>
+                      <div class="sidenav">
+                        <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createDepartingFlightModal" title="Add New Flight">
+                        <i class="fal fa-plus"></i>
+                        </button>
+
+                        <%- include('../partials/modals/newDepartureFlight') %>
+                      </div>
                         <% } %>
-                      <% } %>
-                    </ul>
 
-                    <% if(!hasDepartures) { %>
-                      <h6>You haven't saved any departing flights yet!</h6>
-                      <small>Add all guests flights here to better coordinate transfers from your accomodations to the airport</small>
-                    <% } %>
+                        <div class="container posts-list">
+                          <ul style="padding: inherit">
 
-                  <% } %>
+                          <% for(let i=0; i < oneTrip.flights.length; i++) { %>
+                            <% if (oneTrip.flights[i].category === 'Departure') { %>
+                              <% hasDepartures = true %>
+                              <li class="lower-list-items">
+                                <div class="card text-center">
+                                  <h6><%= oneTrip.flights[i].guest %></h6>
+
+                                  <div class="sidenav">
+                                    <form action="/tripdetail/<%= oneTrip._id %>/departingflight/<%= oneTrip.flights[i]._id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="far fa-trash-alt" id="trash">
+                                      </button>
+                                      </form>
+                                  </div>
+
+
+                                  <small class="text-muted">Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
+                                  <small class="text-muted">Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
+                                </div>
+                              </li>
+                            <% } %>
+                          <% } %>
+                        </ul>
+
+                          <% if(!hasDepartures) { %>
+                            <h6>You haven't saved any departing flights yet!</h6>
+                            <small>Add all guests flights here to better coordinate transfers from your accomodations to the airport</small>
+                          <% } %>
+
+                        <% } %>
 
 
                 </div>
