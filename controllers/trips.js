@@ -27,12 +27,14 @@ router.get('/', (req,res) => {
 
 // --------------------- New 
 router.get('/newtrip', function (req, res) {
-        const allTrips = db.Trip.find({});
+    db.Trip.find({}, function (err, allTripsFromDB) {
+        if(err) return console.log(err);
         const context = {
-           allTrips: allTrips,
+           allTrips: allTripsFromDB,
         }
         res.render('trip/new', context);
-});
+    });
+})
 
 
 // --------------------- Create 
