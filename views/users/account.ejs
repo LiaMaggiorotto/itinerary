@@ -27,27 +27,28 @@
           <div class="container" id="show-page-header"> 
             <div class="row justify-content-center">
               <div class="col-lg-11 col-xl-9">
-                <div class="page-header mb-4">
-                  <div class="media">
-                    <% if (!user.imageLink) { %>
-                      <img alt="Profile Picture" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar avatar-lg mt-1">
-                    <% } else { %>
-                      <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
-                    <%  }  %> 
-                    <div class="media-body ml-3">
-                      <h2 class="mb-0"><%= user.username %></h2>
+                <section class="py-4 py-g-5">
+                  <div class="page-header mb-4">
+                    <div class="media-avatar">
+                      <% if (!user.imageLink) { %>
+                        <img alt="Profile Picture" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar avatar-lg mt-1" id="user-profile-avatar">
+                      <% } else { %>
+                        <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
+                      <%  }  %> 
+                      <div class="media-body ml-3">
+                        <h2 class="mb-0"><%= user.username %></h2>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <section class="py-4 py-g-5">
-                  <h5>Name: <%= user.fullname %> </span></h5>
-                  <h5>Member Since:<%= user.createdAt %></span></h5>
-                    <% if(user) { %>
-                        <a class="link" data-toggle="modal" data-target="#profileEditModal" id="editProfileLink">Edit Profile</a>
-                    <% } %>
+                  <section class="py-4 py-g-5">
+                    <h5>Name: <%= user.fullname %> </span></h5>
+                    <h5>Member Since:<%= user.createdAt %></span></h5>
+                      <% if(user) { %>
+                          <a class="link" data-toggle="modal" data-target="#profileEditModal" id="editProfileLink">Edit Profile</a>
+                      <% } %>
+                  </section>
                 </section>
-                
               </div> 
             </div>
           </div>

@@ -301,6 +301,18 @@ a.nav-link.show:hover {
 }
 
 
+/* User Profile View */
+
+#user-profile-avatar {
+    width: 7.25rem;
+    height: 7.25rem;
+    border: 1px solid #33415c;
+}
+
+div.media-body.ml-3 {
+    margin-top: .5rem;
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 600px) {

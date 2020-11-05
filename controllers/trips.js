@@ -38,7 +38,6 @@ router.get('/newtrip', function (req, res) {
 // --------------------- Create 
 router.post('/', function (req, res) {
     req.body.user = req.session.currentUser.id
-    console.log(req.session.currentUser)
     db.Trip.create(req.body, function (err, createdTripInDB) {
         if(err) {
             console.log(err);
@@ -48,7 +47,7 @@ router.post('/', function (req, res) {
                 foundUser.save()
                 console.log(req.body);
                 console.log(createdTripInDB);
-                res.redirect(`/trips`)
+                res.redirect(`/trips/${createdTripInDB._id}`)
             })
         }
     })
@@ -103,12 +102,13 @@ router.get('/:id', async function (req,res) {
 
 // --------------------- Delete
 router.delete('/:id', function (req, res) {
+    req.body.user = req.session.currentUser.id
     db.Trip.findByIdAndDelete(req.params.id, (err, oneTripFromDB) => {
     if(err) {
         console.log(err);
     } else {
         console.log(oneTripFromDB);
-        res.redirect('/trips');
+        res.redirect(`/user/${req.body.user}`);
     }
     })
 })
