@@ -27,9 +27,9 @@ router.get('/', (req,res) => {
 
 // --------------------- New 
 router.get('/newtrip', function (req, res) {
-        const foundTrips = db.Trip.find({});
+        const allTrips = db.Trip.find({});
         const context = {
-            trips: foundTrips,
+           allTrips: allTrips,
         }
         res.render('trip/new', context);
 });
