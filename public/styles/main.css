@@ -190,6 +190,10 @@ img.header-overlay {
     margin-top: 20vh!important;
 }
 
+.landing-page-featurette-img {
+    max-width: -webkit-fill-available;
+}
+
 /* Featurettes */
 
 div.container.marketing {
@@ -229,7 +233,7 @@ div#show-page-header.container {
 
 .post-detail-image {
     background-position: center top;
-    opacity: 0.5;
+    opacity: 0.7;
     background-size: cover;
     min-width: 100%;
     min-height: 300px;
@@ -326,7 +330,26 @@ div.media-body.ml-3 {
 
 #profile-detail-display {
     text-align: left;
-    max-width: fit-content;
+    color: #33415c;
+    border: 1px solid #5C677D;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Add New Trip View */
+
+.new-trip-header {
+    color: #33415C;
+}
+
+.editLabel {
+    color: #5c677d;
+    margin-top: .75rem;
+}
+
+.editButtons {
+    margin: 1rem;
 }
 
 
@@ -392,6 +415,10 @@ div.media-body.ml-3 {
 
     ul {
         padding: 1rem;
+    }
+
+    .show-overlay {
+        padding-top: 25%;
     }
 
     /* Login Modal */

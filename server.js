@@ -61,7 +61,7 @@ app.use(function(req, res, next) {
 
 // home
 app.get('/', function (req, res)  {
-    res.render('index');
+    res.render('index', { user: req.session.currentUser });
 });
 
 //  Auth Routes
