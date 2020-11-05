@@ -72,6 +72,16 @@ img#modal-img-register {
 #editTripModalBody {
     display: flex;
     flex-direction: column;
+    text-align: left;
+}
+
+.editTripButtons {
+    display: inline-flex;
+
+}
+
+.editTripFooter {
+    text-align: right;
 }
 
 /* Trip Feature Modals and Buttons */
