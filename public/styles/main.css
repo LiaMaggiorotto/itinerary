@@ -95,10 +95,6 @@ img#modal-img-register {
     padding: 8px 0;
 }
 
-#createNewEvent {
-    text-align: left;
-    max-width: fit-content;
-}
 
 /* Second Nav Bar */
 
@@ -248,7 +244,7 @@ div#show-page-header.container {
 
 .post-detail-image {
     background-position: center top;
-    opacity: 0.7;
+    opacity: 0.6;
     background-size: cover;
     min-width: 100%;
     min-height: 300px;
