@@ -22,18 +22,18 @@
       <!-- Main Section -->
 
       
-      <!-- Trip Detail Header -->
+      <!-- User Profile Header -->
         <div class="main-container">
           <div class="container" id="show-page-header"> 
             <div class="row justify-content-center">
-              <div class="col-lg-11 col-xl-9">
+              <div class="col-lg-11 col-xl-9" id="profile-display">
                 <section class="py-4 py-g-5">
                   <div class="page-header mb-4">
                     <div class="media-avatar">
                       <% if (!user.imageLink) { %>
-                        <img alt="Profile Picture" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar avatar-lg mt-1" id="user-profile-avatar">
+                        <img alt="Profile Picture" id="no-user-profile-avatar" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar avatar-lg mt-1" >
                       <% } else { %>
-                        <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
+                        <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar" id="no-user-profile-avatar">
                       <%  }  %> 
                       <div class="media-body ml-3">
                         <h2 class="mb-0"><%= user.username %></h2>
@@ -42,11 +42,18 @@
                   </div>
 
                   <section class="py-4 py-g-5">
-                    <h5>Name: <%= user.fullname %> </span></h5>
-                    <h5>Member Since:<%= user.createdAt %></span></h5>
+                    <div id="profile-detail-display">
+                      <h5>Name: <%= user.fullname %></h5><br>
+                      <h5>All Time Favorite Getaway: <%= user.favoriteVacation %></h5><br>
+                    </div>
+                    <!-- <h5>Member Since:<%= user.createdAt %></h5> -->
+                    <div>
                       <% if(user) { %>
                           <a class="link" data-toggle="modal" data-target="#profileEditModal" id="editProfileLink">Edit Profile</a>
+
+                          <%- include('../partials/modals/editProfile') %>
                       <% } %>
+                    </div>
                   </section>
                 </section>
               </div> 

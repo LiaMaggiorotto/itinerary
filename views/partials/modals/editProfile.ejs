@@ -1,0 +1,47 @@
+<!-- edit trip detail modal -->
+
+<div class="modal fade" id="profileEditModal" tabindex="-1" role="dialog" aria-labelledby="profileEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileEditModalLabel">Edit <%= user.username %>'s' Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="editProfileModalBody"> 
+
+
+                <form action="/user/<%= user.id %>?_method=PUT" method="POST">
+                    <h5>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" value="<%= user.username %>">
+                    </h5>
+                    <h5>
+                    <label for="fullname">Name:</label>
+                    <input type="text" name="fullname" value="<%= user.fullname %>">
+                    </h5>
+                    <h5>
+                    <label for="imageLink">Profile Picture:</label>
+                    <input type="text" name="imageLink" value="<%= user.imageLink %>">
+                    </h5>
+                    <h5>
+                    <label for="favoriteVacation">Profile Picture:</label>
+                    <input type="text" name="favoriteVacation" value="<%= user.favoriteVacation %>">
+                    </h5>
+
+                    <hr>
+                    <input type="submit" class="btn btn-secondary" value="Update" /> 
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$('#profileEditModal').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+})
+</script>
+
+<!-- end modal -->

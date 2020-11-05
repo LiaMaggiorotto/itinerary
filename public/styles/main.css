@@ -309,9 +309,26 @@ a.nav-link.show:hover {
     border: 1px solid #33415c;
 }
 
+#no-user-profile-avatar {
+    width: 7.25rem;
+    height: 7.25rem;
+    border: 1px solid #33415c;
+}
+
 div.media-body.ml-3 {
     margin-top: .5rem;
 }
+
+#profile-display {
+    display: flex;
+    justify-content: center;
+}
+
+#profile-detail-display {
+    text-align: left;
+    max-width: fit-content;
+}
+
 
 /* Media Queries */
 
