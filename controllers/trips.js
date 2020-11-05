@@ -7,7 +7,7 @@ const db = require('../models');
 
 const eventCategories = ['Dining', 'Entertainment', 'Travel', 'Fitness', 'Check In', 'Check Out', 'Leisure', 'Tour'];
 
-const flightCategory = ['Arrival, Departure'];
+const flightCategory = ['Arrival', 'Departure'];
 
 // --------------------- Index View 
 router.get('/', (req,res) => {

@@ -7,7 +7,6 @@ const db = require("../models");
 
 // --------------------- Create 
 router.post('/:id', function (req, res) {
-    console.log(req.body);
     const selectedCategory = req.query.option;
     if(selectedCategory === 'itinerary') {
         db.Itinerary.create(req.body, function (err, createdEvent) {
@@ -37,7 +36,7 @@ router.post('/:id', function (req, res) {
                 res.redirect(`/trips/${foundTrip._id}?option=notes`)
             })
         })
-    } else if(selectedCategory === 'arrivals' || selectedCategory === 'departures') {
+    } else if(selectedCategory === 'arrivals') {
         db.Flight.create(req.body, function (err, createdFlight) {
             if(err) {
                 console.log(err);
@@ -46,18 +45,29 @@ router.post('/:id', function (req, res) {
                 if(err) {
                     console.log(err);
                 }
-                foundTrip.notes.push(createdFlight);
+                foundTrip.flights.push(createdFlight);
                 foundTrip.save();
-                console.log('Trip:', foundTrip)
-                console.log('Flight:', createdFlight)
-                if(createdFlight.category === "Arrival") {
-                    res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
+                res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
+            })
+        })
+    } else if(selectedCategory === 'departure') {   
+        db.Flight.create(req.body, function (err, createdFlight) {
+            if(err) {
+                console.log(err);
+            }
+            db.Trip.findById(req.params.id, function (err, foundTrip) {
+                if(err) {
+                    console.log(err);
                 }
-                res.redirect(`/trips/${foundTrip._id}?option=departures`)
+                foundTrip.flights.push(createdFlight);
+                foundTrip.save();
+                console.log('Flight:', createdFlight)
+                res.redirect(`/trips/${foundTrip._id}?option=arrivals`)
             })
         })
     }
-})
+});
+
 
 
 // --------------------- Edit

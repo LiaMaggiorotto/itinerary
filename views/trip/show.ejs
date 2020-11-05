@@ -91,8 +91,8 @@
                         </button>
                     
                         <%- include('../partials/modals/newItineraryEvent') %>
-                        <% } %>
                       </div>
+                        <% } %>
                 
                       <div class="container posts-list">
 
@@ -154,8 +154,8 @@
                             </button>
                             
                             <%- include('../partials/modals/newNote') %>
-                            <% } %>
                           </div>
+                            <% } %>
                         
                         <div class="container posts-list">
 
@@ -196,34 +196,132 @@
                             </ul>
                           </div>
                       </div>
-
-
-
-
-
                       
+
+
+
+
+
                             <!-- Arrivals -->
                             
-                            <% } else if(selectedCategory === 'arrivals') { %>
-                              <% let hasArrivals = false %>
-                              <h3>Arrivals</h3>
-                              <ul>
-                                <% for(let i=0; i < oneTrip.flights.length; i++) { %>
-                                  <% if (oneTrip.flights[i].category === 'arrival') { %>
-                                    <% hasArrivals = true %>
-                                    <li>
-                                      <h6><%= oneTrip.flights[i].guest %></h6>
-                                      <small>Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
-                                      <small>Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
-                                    </li>
-                                    <% } %>
-                                    <% } %>
-                                  </ul>
+                  <% } else if(selectedCategory === 'arrivals') { %>
+                    <% let hasArrivals = false %>
+                    <div>
+                      <h3 class="show-page-detail-header">Arrivals</h3>
+                      <% if(user) { %>
+                      <div class="sidenav">
+                        <button type="button" class="btn btn-primary btn-circle btn-xl add-post-btn" data-toggle="modal" data-target="#createFlightModal" title="Add New Flight">
+                        <i class="fal fa-plus"></i>
+                        </button>
+                    
+                      <!-- flight modal start -->
 
-                      <% if(!hasArrivals) { %>
-                        <h6>You haven't saved any arriving flights yet!</h6>
-                        <small>Add all guests flights here to better coordinate transfers from the airport to your accomodations</small>
-                      <% } %>
+                      <div class="modal fade" id="createFlightModal" tabindex="-1" role="dialog" aria-labelledby="createFlightModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="createFlightModalLabel">Save A Flight</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            
+                            <div class="modal-body">
+                              <form method="POST" action="/tripdetail/<%= oneTrip._id %>?option=arrivals">
+                                
+                              <h7>
+                                <label for="guest">Guest Name:</label>
+                                <input type="text" name="guest">
+                              </h7>
+                              <h7>
+                                <label for="airline">Airline:</label>
+                                <input type="text" name="airline">
+                              </h7>
+                              <h7>
+                                <label for="departureCity">Departing From:</label>
+                                <input type="text" name="departureCity">
+                              </h7>
+                              <h7>
+                                <label for="departureDate">Departure Date:</label>
+                                <input type="text" name="departureDate">
+                              </h7>
+                              <label for="departureTime">Departure Time:</label>
+                                <input type="text" name="departureTime">
+                              </h7>
+                              <h7>
+                                <label for="arrivalCity">Arriving To:</label>
+                                <input type="text" name="arrivalCity">
+                              </h7>
+                              <h7>
+                                <label for="arrivalDate">Arrival Date:</label>
+                                <input type="text" name="arrivalDate">
+                              </h7>
+                              <label for="arrivalTime">Arrival Time:</label>
+                                <input type="text" name="arrivalTime">
+                              </h7>
+                              <h7> Category: <span class="input"><select name="category">
+                                <% flightCategory.forEach((category) => { %>
+                                        <option><%= category %></option>
+                                <%})%>
+                            </select></span>
+                            </h7>
+                            
+                            
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <input type="submit" class="btn btn-primary" value="Add">
+                            </div>
+                          </form>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    </div>
+                    <script>
+                    $('#createFlightModal').on('show.bs.modal', function (event) {
+                      var button = $(event.relatedTarget)
+                      var modal = $(this)
+                      modal.find('.modal-title').text('Add New Note')
+                    })
+                    </script>
+
+
+
+
+                      <!-- flight modal end -->
+
+                        <!-- <%- include('../partials/modals/newFlight') %> -->
+                      </div>
+                        <% } %>
+
+
+
+
+
+                      <div class="container posts-list">
+                        <ul style="padding: inherit">
+
+                          <% for(let i=0; i < oneTrip.flights.length; i++) { %>
+                            <% if (oneTrip.flights[i].category === 'Arrival') { %>
+                              <% hasArrivals = true %>
+                              <li class="lower-list-items">
+                                <div class="card text-center">
+                                  <h6><%= oneTrip.flights[i].guest %></h6>
+                                  <small class="text-muted">Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
+                                  <small class="text-muted">Arriving to <%= oneTrip.flights[i].arrivalCity %> on <%= oneTrip.flights[i].arrivalDate %> at <%= oneTrip.flights[i].arrivalTime %> </small>
+                                </div>
+                              </li>
+                            <% } %>
+                          <% } %>
+                              
+                          <% if(!hasArrivals) { %>
+                            <h6>You haven't saved any arriving flights yet!</h6>
+                            <small>Add all guests flights here to better coordinate transfers from the airport to your accomodations</small>
+                          <% } %>
+                        </ul>
+                      </div>
+                    </div> 
+                          
 
 
                   <!-- Departures -->
