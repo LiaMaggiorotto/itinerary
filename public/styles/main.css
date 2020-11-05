@@ -95,6 +95,11 @@ img#modal-img-register {
     padding: 8px 0;
 }
 
+#createNewEvent {
+    text-align: left;
+    max-width: fit-content;
+}
+
 /* Second Nav Bar */
 
 #navbar-two{
