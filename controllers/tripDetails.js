@@ -108,6 +108,20 @@ router.delete('/:tripid/note/:noteid', function (req, res) {
     })
 })
 
+// flight
+router.delete('/:tripid/arrivingflight/:flightid', function(req, res) {
+    const tripid = req. params.tripid;
+    const flightid = req.params.flightid;
+    db.Flight.findByIdAndDelete(flightid, function (err, oneFlightFromDB) {
+        if(err) return console.log(err);
+        db.Trip.findById(tripid, function (err, oneTrip) {
+            if(err) return console.log(err);
+            oneTrip.flights.remove(oneFlightFromDB);
+            oneTrip.save();
+            res.redirect(`/trips/${tripid}?option=arrivals`)
+        })
+    })
+})
 
 
 
