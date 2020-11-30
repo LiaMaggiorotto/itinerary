@@ -10,12 +10,13 @@ Phase 1 of a group travel planning application built using MongoDB, Express, Nod
 
 <img src="/public/images/landing2.png" alt="Itinerary Lower Landing Page">
 
-MVP User Story:
+## User Story:
 
 Trip planning app that keeps everything in one place!
 
 Once an account is created / a user logs in -> directed to account view
-From Account View:
+
+From their Account View:
 
   User may edit their account information, create a new trip, and deactivate their account.
 
@@ -34,6 +35,8 @@ Upon creating a new trip, the user will be able to add the following:
     Create Notes - a feed where they can store packing recommendations, blogs, links, or anything else they may want to reference for their trip at a later date
     
     Each trip will have a unique url using the trip id that is sharable with friends if needed
+
+<img src="/public/images/itinerary.png" alt="Itinerary View">
 
 ## Color Schema
 
