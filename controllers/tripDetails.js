@@ -119,7 +119,7 @@ router.delete('/:tripid/arrivingflight/:flightid', function(req, res) {
 
 // departing flight
 router.delete('/:tripid/departingflight/:flightid', function(req, res) {
-    const tripid = req. params.tripid;
+    const tripid = req.params.tripid;
     const flightid = req.params.flightid;
     db.Flight.findByIdAndDelete(flightid, function (err, oneFlightFromDB) {
         if(err) return console.log(err);
