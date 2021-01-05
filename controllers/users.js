@@ -7,11 +7,6 @@ const {isCorrectUser} = require('./auth');
 
 // base route is /user
 
-// // view register/login modals
-// router.get('/', function (req, res) {
-//     res.render('index');
-// });
-
 
 // show, individual user account view
 router.get('/:id', isCorrectUser, async function (req, res) {
