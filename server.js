@@ -45,7 +45,7 @@ app.use(session({
 // const authRequired = (req, res, next) => {
 //     if(!req.session.currentUser) {
 //         console.log('no current user found')
-//         return res.redirect('/login');
+//         return res.redirect('/');
 //     }
 //     next();
 // }
@@ -54,6 +54,7 @@ app.use(function(req, res, next) {
     res.locals.user = req.session.currentUser;
     next();
   });
+
 
 // --------------------- Routes
 
