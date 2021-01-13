@@ -490,4 +490,14 @@ div.media-body.ml-3 {
         margin-right: 16vw;
     }
 
+    /* Note Modal */
+
+    #note-modal {
+        margin-top: 12vh;
+        margin-left: 16vw;
+        margin-right: 16vw;
+        width: fit-content;
+        text-align: left;
+    }
+
 }
