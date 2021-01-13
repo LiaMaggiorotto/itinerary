@@ -1,18 +1,17 @@
 <!-- departing flight modal start -->
 
 <div class="modal fade" id="createDepartingFlightModal" tabindex="-1" role="dialog" aria-labelledby="createDepartingFlightModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document" id="flight-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="createDepartingFlightModalLabel">Save A Flight</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal-dialog modal-lg" role="document" id="flight-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createDepartingFlightModalLabel">Save A Flight</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        </button>
+      </div>
         
-        <div class="modal-body">
-          <form method="POST" action="/tripdetail/<%= oneTrip._id %>?option=departures">
-            
+      <div class="modal-body">
+        <form method="POST" action="/tripdetail/<%= oneTrip._id %>?option=departures">
           <h7>
             <label for="guest">Guest Name:</label>
             <input type="text" name="guest">
@@ -47,27 +46,27 @@
             <% flightCategory.forEach((category) => { %>
                     <option><%= category %></option>
             <%})%>
-        </select></span>
-        </h7>
+            </select></span>
+          </h7>
         
         
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value="Add">
-        </div>
-      </form>
-    </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Add">
+          </div>
+        </form>
+      </div>
     
+    </div>
   </div>
-  </div>
-  </div>
-  <script>
-  $('#createDepartingFlightModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget)
-  var modal = $(this)
-  modal.find('.modal-title').text('Add Departing Flight')
-  })
-  </script>
+</div>
+<script>
+$('#createDepartingFlightModal').on('show.bs.modal', function (event) {
+var button = $(event.relatedTarget)
+var modal = $(this)
+modal.find('.modal-title').text('Add Departing Flight')
+})
+</script>
 
 
 

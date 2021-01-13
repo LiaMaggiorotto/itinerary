@@ -202,7 +202,7 @@
 
 
 
-                            <!-- Arrivals -->
+                <!-- Arrivals -->
                             
                 <% } else if(selectedCategory === 'arrivals') { %>
                   <% let hasArrivals = false %>
@@ -233,7 +233,7 @@
                                     <form action="/tripdetail/<%= oneTrip._id %>/arrivingflight/<%= oneTrip.flights[i]._id %>?_method=DELETE" method="POST">
                                       <button type="submit" class="far fa-trash-alt" id="trash">
                                       </button>
-                                      </form>
+                                    </form>
                                   </div>
                                   <small class="text-muted">Flying <%= oneTrip.flights[i].airline %></small>
                                   <small class="text-muted">Departing from <%= oneTrip.flights[i].departureCity %> on <%= oneTrip.flights[i].departureDate %> at <%= oneTrip.flights[i].departureTime %></small>
@@ -253,7 +253,7 @@
                           
 
 
-                  <!-- Departures -->
+                <!-- Departures -->
 
                 <% } else if (selectedCategory === 'departures') { %>
                   <% let hasDepartures = false %>

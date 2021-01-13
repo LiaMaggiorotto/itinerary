@@ -311,6 +311,7 @@ div.card.text-center {
 .nav-item {
     border-radius: 0.5rem;
     flex: inherit!important;
+    cursor: pointer;
 }
 
 a.nav-link.show {
