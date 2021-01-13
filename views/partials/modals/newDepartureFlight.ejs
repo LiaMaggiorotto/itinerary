@@ -1,7 +1,7 @@
 <!-- departing flight modal start -->
 
 <div class="modal fade" id="createDepartingFlightModal" tabindex="-1" role="dialog" aria-labelledby="createDepartingFlightModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" id="flight-modal">
+  <div class="modal-dialog modal-lg" role="document" id="departing-flight-modal">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="createDepartingFlightModalLabel">Save A Flight</h5>
@@ -12,40 +12,41 @@
         
       <div class="modal-body">
         <form method="POST" action="/tripdetail/<%= oneTrip._id %>?option=departures">
-          <h7 class="flight-modal-body"> 
-            <label for="guest">Guest Name:</label>
+
+          <h7>
+            <label for="guest" class="flight-modal-body">Guest Name:</label>
             <input type="text" name="guest">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="airline">Airline:</label>
+          <h7>
+            <label for="airline" class="flight-modal-body">Airline:</label>
             <input type="text" name="airline">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="departureCity">Departing From:</label>
+          <h7>
+            <label for="departureCity" class="flight-modal-body">Departing From:</label>
             <input type="text" name="departureCity">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="departureDate">Departure Date:</label>
+          <h7>
+            <label for="departureDate" class="flight-modal-body">Departure Date:</label>
             <input type="text" name="departureDate">
           </h7><br>
-          <h7 class="flight-modal-body">   
-            <label for="departureTime">Departure Time:</label>
+          <h7>
+            <label for="departureTime" class="flight-modal-body">Departure Time:</label>
             <input type="text" name="departureTime">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="arrivalCity">Arriving To:</label>
+          <h7>
+            <label for="arrivalCity" class="flight-modal-body">Arriving To:</label>
             <input type="text" name="arrivalCity">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="arrivalDate">Arrival Date:</label>
+          <h7>
+          <label for="arrivalDate" class="flight-modal-body">Arrival Date:</label>
             <input type="text" name="arrivalDate">
           </h7><br>
-          <h7 class="flight-modal-body">
-            <label for="arrivalTime">Arrival Time:</label>
+          <h7>
+            <label for="arrivalTime" class="flight-modal-body">Arrival Time:</label>
             <input type="text" name="arrivalTime">
           </h7><br>
-          <h7 class="flight-modal-body"> 
-            <label for="category">Category:</label>
+          <h7> 
+            <label for="category" class="flight-modal-body">Category:</label>
               <span class="input">
                 <select name="category">
                   <% flightCategory.forEach((category) => { %>

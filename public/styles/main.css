@@ -86,9 +86,22 @@ img#modal-img-register {
 
 /* Flight Modals */
 
-#flight-modal {
+#departing-flight-modal {
     margin-top: 12vh;
-    margin-left: 31vw;
+    margin-left: 50vw;
+    width: fit-content;
+    text-align: right;
+}
+
+#arriving-flight-modal {
+    margin-top: 12vh;
+    margin-left: 50vw;
+    width: fit-content;
+    text-align: right;
+}
+
+.flight-modal-body {
+    margin-bottom: 0.75rem;
 }
 
 /* Trip Feature Modals and Buttons */
@@ -129,8 +142,6 @@ img#nav-two-logo {
 #navbar2-brand {
     margin-right: 0;
 }
-
-
 
 .avatar {
     width: 3.25rem;
@@ -452,9 +463,15 @@ div.media-body.ml-3 {
         display: none;
     }
 
-    /* Flight Modal */
+    /* Flight Modals */
 
-    #flight-modal {
+    #departing-flight-modal {
+        margin-top: 12vh;
+        margin-left: 16vw;
+        margin-right: 16vw;
+    }
+
+    #arriving-flight-modal {
         margin-top: 12vh;
         margin-left: 16vw;
         margin-right: 16vw;
