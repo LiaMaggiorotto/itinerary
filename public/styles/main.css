@@ -104,6 +104,19 @@ img#modal-img-register {
     margin-bottom: 0.75rem;
 }
 
+/* Note Modal */
+
+#note-modal {
+    margin-top: 12vh;
+    margin-left: 50vw;
+    width: fit-content;
+    text-align: left;
+}
+
+.note-modal-body {
+    margin-bottom: 1.5rem;
+}
+
 /* Trip Feature Modals and Buttons */
 
 .sidenav {
