@@ -5,7 +5,6 @@ body {
     color: #171A27;
     font-family: 'Montserrat', sans-serif;
     background-color: #dfe1e1;
-    font-family: 'Montserrat', sans-serif;
 }
 
 div.layout.layout-nav-side {
@@ -88,14 +87,14 @@ img#modal-img-register {
 
 #departing-flight-modal {
     margin-top: 12vh;
-    margin-left: 50vw;
+    margin-left: 45vw;
     width: fit-content;
     text-align: right;
 }
 
 #arriving-flight-modal {
     margin-top: 12vh;
-    margin-left: 50vw;
+    margin-left: 45vw;
     width: fit-content;
     text-align: right;
 }
@@ -108,7 +107,7 @@ img#modal-img-register {
 
 #note-modal {
     margin-top: 12vh;
-    margin-left: 50vw;
+    margin-left: 45vw;
     width: fit-content;
     text-align: left;
 }
@@ -116,6 +115,25 @@ img#modal-img-register {
 .note-modal-body {
     margin-bottom: 1.5rem;
 }
+
+/* New Event Modal */
+
+#newEventModal {
+    text-align: left;
+    width: fit-content;
+    margin-top: 12vh;
+    margin-left: 45vw;
+}
+
+#newEventNotes {
+    margin: auto;
+    border: 1px solid #495057;
+}
+
+#newEventModalFooter {
+    margin-top: 20px;
+}
+
 
 /* Trip Feature Modals and Buttons */
 
@@ -503,5 +521,10 @@ div.media-body.ml-3 {
         width: fit-content;
         text-align: left;
     }
-
+    
+    /* New Itinerary Event Modal */
+    #newEventModal {
+        width: fit-content;
+        margin: 12vh 15vw 0 15vw;
+    }
 }

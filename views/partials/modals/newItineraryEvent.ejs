@@ -1,6 +1,6 @@
 
 <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-md" role="document" id="newEventModal">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -18,12 +18,14 @@
                     <input type="text" name="title">
                 </h5>
                 <h5>
-                    <label for="date">Date:</label>
-                    <input type="text" name="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/YY/DDDD">
+                    <label for="date">Date:
+                    <!-- <input type="date" name="date" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="MM/YY/DDDD"> -->
+                    <input type="date" name="date">
+                    </label>
                 </h5> 
                 <h5>
                     <label for="time">Time:</label>
-                    <input type="text" name="time">
+                    <input type="time" name="time">
                 </h5> 
                 <hr>
                 <p><small>Optional:</small></p>
@@ -42,7 +44,8 @@
                 </h7><br>
                 <h7>
                     <label for="description">Notes:</label>
-                    <input type="textarea" name="description">
+                    <!-- <input type="textarea" name="description"> -->
+                    <textarea class="form-control" name="description" rows="3" id="newEventNotes"></textarea>
                 </h7><br>
                 <h7> Category: <span class="input"><select name="category">
                     <% eventCategories.forEach((category) => { %>
@@ -53,7 +56,7 @@
 
 
                             
-                <div class="modal-footer">
+                <div class="modal-footer" id="newEventModalFooter">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" value="Add">
                 </div>
