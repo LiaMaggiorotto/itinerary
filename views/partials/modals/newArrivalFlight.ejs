@@ -13,42 +13,48 @@
         <div class="modal-body">
           <form method="POST" action="/tripdetail/<%= oneTrip._id %>?option=arrivals">
             
-          <h7>
+          <h7 class="flight-modal-body">
             <label for="guest">Guest Name:</label>
             <input type="text" name="guest">
-          </h7>
-          <h7>
+          </h7><br>
+          <h7 class="flight-modal-body">
             <label for="airline">Airline:</label>
             <input type="text" name="airline">
-          </h7>
-          <h7>
+          </h7><br>
+          <h7 class="flight-modal-body">
             <label for="departureCity">Departing From:</label>
             <input type="text" name="departureCity">
-          </h7>
-          <h7>
+          </h7><br>
+          <h7 class="flight-modal-body">
             <label for="departureDate">Departure Date:</label>
             <input type="text" name="departureDate">
-          </h7>
-          <label for="departureTime">Departure Time:</label>
+          </h7><br>
+          <h7 class="flight-modal-body">
+            <label for="departureTime">Departure Time:</label>
             <input type="text" name="departureTime">
-          </h7>
-          <h7>
+          </h7><br>
+          <h7 class="flight-modal-body">
             <label for="arrivalCity">Arriving To:</label>
             <input type="text" name="arrivalCity">
-          </h7>
-          <h7>
-            <label for="arrivalDate">Arrival Date:</label>
+          </h7><br>
+          <h7 class="flight-modal-body">
+          <label for="arrivalDate">Arrival Date:</label>
             <input type="text" name="arrivalDate">
-          </h7>
-          <label for="arrivalTime">Arrival Time:</label>
+          </h7><br>
+          <h7 class="flight-modal-body">
+            <label for="arrivalTime">Arrival Time:</label>
             <input type="text" name="arrivalTime">
-          </h7>
-          <h7> Category: <span class="input"><select name="category">
-            <% flightCategory.forEach((category) => { %>
+          </h7><br>
+          <h7 class="flight-modal-body"> 
+            <label for="category">Category:</label>
+              <span class="input">
+                <select name="category">
+                  <% flightCategory.forEach((category) => { %>
                     <option><%= category %></option>
-            <%})%>
-        </select></span>
-        </h7>
+                  <%})%>
+                </select>
+              </span>
+          </h7>
         
         
         <div class="modal-footer">
