@@ -11,7 +11,7 @@ const flightCategory = ['Arrival', 'Departure'];
 
 // --------------------- Index View 
 router.get('/', (req,res) => {
-    db.Trip.find({user: req.session.currentUser.id}, (err, allTripsFromDB) => {
+    db.Trip.find({user: req.session.currentUser}, (err, allTripsFromDB) => {
         if(err) {
             console.log(err);
         } else {
@@ -19,6 +19,7 @@ router.get('/', (req,res) => {
                 allTrips: allTripsFromDB,
                 eventCategories: eventCategories,
                 flightCategory: flightCategory,
+                user: req.session.currentUser,
             });
         }
     });

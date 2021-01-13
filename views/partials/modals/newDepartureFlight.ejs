@@ -1,7 +1,7 @@
 <!-- departing flight modal start -->
 
 <div class="modal fade" id="createDepartingFlightModal" tabindex="-1" role="dialog" aria-labelledby="createDepartingFlightModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg" role="document" id="flight-modal">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="createDepartingFlightModalLabel">Save A Flight</h5>
@@ -65,7 +65,7 @@
   $('#createDepartingFlightModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
   var modal = $(this)
-  modal.find('.modal-title').text('Add New Note')
+  modal.find('.modal-title').text('Add Departing Flight')
   })
   </script>
 

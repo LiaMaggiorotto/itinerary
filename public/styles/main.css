@@ -84,6 +84,13 @@ img#modal-img-register {
     text-align: right;
 }
 
+/* Flight Modals */
+
+#flight-modal {
+    margin-top: 12vh;
+    margin-left: 31vw;
+}
+
 /* Trip Feature Modals and Buttons */
 
 .sidenav {
@@ -442,6 +449,14 @@ div.media-body.ml-3 {
 
     img#modal-img-register {
         display: none;
+    }
+
+    /* Flight Modal */
+
+    #flight-modal {
+        margin-top: 12vh;
+        margin-left: 16vw;
+        margin-right: 16vw;
     }
 
 }

@@ -8,15 +8,19 @@
 
     <div class="d-flex align-items-center">
 
+    <!-- Hamburger Navigation  -->
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="d-block d-lg-none ml-2">
             <div class="dropdown">
-              <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img alt="Profile Picture" src="https://i.imgur.com/xdjvSOX.jpg?1" class="avatar">
-              </a>
+                <% if (!user.imageLink) { %>
+                    <img alt="Profile Picture Avatar" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar">
+                <% } else { %>
+                    <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
+                <%  }  %> 
               <div class="dropdown-menu dropdown-menu-right">
                 <a href="#" class="dropdown-item">Account</a>
                 <form action="/logout?_method=DELETE" method="POST">
@@ -29,7 +33,7 @@
 
         <div class="collapse navbar-collapse flex-column" id="navbar-collapse">
 
-            <!-- Trip Links -->
+        <!-- Trip Links -->
 
             <ul class="navbar-nav d-lg-block">
         
@@ -67,7 +71,7 @@
             <div class="dropup">
                 <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <% if (!user.imageLink) { %>
-                        <img alt="Profile Picture" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar">
+                        <img alt="Profile Picture Avatar" src="https://cityhope.cc/wp-content/uploads/2020/01/default-avatar.png" class="avatar">
                     <% } else { %>
                         <img alt="Profile Picture" src="<%= user.imageLink %>" class="avatar">
                     <%  }  %> 

@@ -92,7 +92,7 @@
                     
                         <%- include('../partials/modals/newItineraryEvent') %>
                       </div>
-                        <% } %>
+                    <% } %>
                 
                       <div class="container posts-list">
 
@@ -134,7 +134,7 @@
                           
                           <% if(oneTrip.itinerary.length === 0) { %>
                             <h6>There are no events added for this trip. Let's get planning!</h6>
-                            <% } %>
+                          <% } %>
                             
                         </ul>
                       </div>
@@ -144,7 +144,7 @@
 
                   <!-- Notes -->
 
-                  <% } else if(selectedCategory === 'notes') { %>
+                <% } else if(selectedCategory === 'notes') { %>
                       <div>
                         <h3 class="show-page-detail-header">Notes</h3>
                         <% if(user) { %>
@@ -204,8 +204,8 @@
 
                             <!-- Arrivals -->
                             
-                  <% } else if(selectedCategory === 'arrivals') { %>
-                    <% let hasArrivals = false %>
+                <% } else if(selectedCategory === 'arrivals') { %>
+                  <% let hasArrivals = false %>
                     <div>
                       <h3 class="show-page-detail-header">Arrivals</h3>
                       <% if(user) { %>
@@ -255,8 +255,8 @@
 
                   <!-- Departures -->
 
-                  <% } else if (selectedCategory === 'departures') { %>
-                    <% let hasDepartures = false %>
+                <% } else if (selectedCategory === 'departures') { %>
+                  <% let hasDepartures = false %>
                     <div>
                     <h3 class="show-page-detail-header">Departures</h3>
                     <% if(user) { %>
@@ -302,7 +302,7 @@
                       </div>
                     </div>
                             
-                  <% } %>
+                <% } %>
 
 
                 </div>
