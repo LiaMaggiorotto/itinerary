@@ -395,6 +395,10 @@ div.media-body.ml-3 {
     margin: 1rem;
 }
 
+.new-trip-textbox {
+    width: fit-content;
+    margin: auto;
+}
 
 /* Media Queries */
 
